@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appli", "Appli", "{3BAB132E-3BC7-47B4-A07F-8EA688915BE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{804A5EFA-C961-4182-BAD7-487BF952C466}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevApp", "Dev\DevApp\DevApp.csproj", "{F0D31E6F-E357-4F3A-AB79-A8D01F79765E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoellonToolkit.MVVMBase", "Appli\MoellonToolkit.MVVMBase\MoellonToolkit.MVVMBase.csproj", "{ABFD4F97-95D8-4295-A6D4-59420FEEDAE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoellonToolkit.CommonDlgs.Defs", "Appli\MoellonToolkit.CommonDlgs.Defs\MoellonToolkit.CommonDlgs.Defs.csproj", "{239E66BB-7F41-45B8-B224-D03490652E39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoellonToolkit.CommonDlgs.Impl", "Appli\MoellonToolkit.CommonDlgs.Impl\MoellonToolkit.CommonDlgs.Impl.csproj", "{5D3C1D59-7575-4C1C-8BAA-7F9575604414}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_BuildNuget", "_BuildNuget", "{BE0269CB-9FA7-418F-B193-6ACEB4AFA9B8}"
+	ProjectSection(SolutionItems) = preProject
+		_BuildNuget\readme.txt = _BuildNuget\readme.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{2360DD83-840B-45BD-AE52-5DEA9B294281}"
+	ProjectSection(SolutionItems) = preProject
+		_BuildNuget\Model\MoellonToolkit.nuspec = _BuildNuget\Model\MoellonToolkit.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Built", "Built", "{F73080FD-6D07-409B-9CD4-D207E81537B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0D31E6F-E357-4F3A-AB79-A8D01F79765E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D31E6F-E357-4F3A-AB79-A8D01F79765E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D31E6F-E357-4F3A-AB79-A8D01F79765E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0D31E6F-E357-4F3A-AB79-A8D01F79765E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFD4F97-95D8-4295-A6D4-59420FEEDAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFD4F97-95D8-4295-A6D4-59420FEEDAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFD4F97-95D8-4295-A6D4-59420FEEDAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFD4F97-95D8-4295-A6D4-59420FEEDAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239E66BB-7F41-45B8-B224-D03490652E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239E66BB-7F41-45B8-B224-D03490652E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239E66BB-7F41-45B8-B224-D03490652E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239E66BB-7F41-45B8-B224-D03490652E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3C1D59-7575-4C1C-8BAA-7F9575604414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3C1D59-7575-4C1C-8BAA-7F9575604414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3C1D59-7575-4C1C-8BAA-7F9575604414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3C1D59-7575-4C1C-8BAA-7F9575604414}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F0D31E6F-E357-4F3A-AB79-A8D01F79765E} = {804A5EFA-C961-4182-BAD7-487BF952C466}
+		{ABFD4F97-95D8-4295-A6D4-59420FEEDAE4} = {3BAB132E-3BC7-47B4-A07F-8EA688915BE2}
+		{239E66BB-7F41-45B8-B224-D03490652E39} = {3BAB132E-3BC7-47B4-A07F-8EA688915BE2}
+		{5D3C1D59-7575-4C1C-8BAA-7F9575604414} = {3BAB132E-3BC7-47B4-A07F-8EA688915BE2}
+		{2360DD83-840B-45BD-AE52-5DEA9B294281} = {BE0269CB-9FA7-418F-B193-6ACEB4AFA9B8}
+		{F73080FD-6D07-409B-9CD4-D207E81537B5} = {BE0269CB-9FA7-418F-B193-6ACEB4AFA9B8}
+	EndGlobalSection
+EndGlobal

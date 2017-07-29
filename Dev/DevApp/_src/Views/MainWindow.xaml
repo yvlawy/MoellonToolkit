@@ -1,0 +1,109 @@
+﻿<Window x:Class="DevApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DevApp.Views"
+        xmlns:tc="clr-namespace:MoellonToolkit.CommonDlgs.Impl;assembly=MoellonToolkit.CommonDlgs.Impl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Height="22">
+            <MenuItem Header="Fichier">
+                <MenuItem Header="New"/>
+                <MenuItem Header="Open" InputGestureText="Ctrl-O" Command="{Binding AppMainMenuVM.AppOpenFileCommand}"/>
+                <MenuItem Header="Close"/>
+                <MenuItem Header="Save"/>
+                <Separator />
+                <MenuItem Header="E_xit" InputGestureText="Ctrl-X" Command="{Binding AppMainMenuVM.AppExitCommand}"/>
+            </MenuItem>
+
+            <MenuItem Header="Edition"/>
+
+            <MenuItem Header="Aide"/>
+        </Menu>
+
+        <!-- central area -->
+        <tc:CloseableTabControl>
+            <TabItem Header="Dialogs">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="0" Width="180" Height="25" Content="Dlg Information" Command="{Binding ShowDlgInformationCmd}" />
+                    <Button Grid.Row="0" Grid.Column="1" Width="180" Height="25" Content="Dlg Question" Command="{Binding ShowDlgQuestionCmd}" />
+                    <Button Grid.Row="0" Grid.Column="2" Width="180" Height="25" Content="Dlg Error" Command="{Binding ShowDlgErrorCmd}" />
+                    <Button Grid.Row="0" Grid.Column="3" Width="180" Height="25" Content="Dlg Warning" Command="{Binding ShowDlgWarningCmd}" />
+
+                    <Button Grid.Row="1" Grid.Column="0" Width="180" Height="25" Content="Dlg W-XL Information" Command="{Binding ShowDlg_WXL_InformationCmd}" />
+                    <Button Grid.Row="1" Grid.Column="1" Width="180" Height="25" Content="Dlg W-XL, H-XL Question" Command="{Binding ShowDlg_WXL_HXL_QuestionCmd}" />
+                    <Button Grid.Row="1" Grid.Column="2" Width="180" Height="25" Content="Dlg W-L, H-XXL Error" Command="{Binding ShowDlg_WL_HXXL_ErrorCmd}" />
+                    <Button Grid.Row="3" Grid.Column="0" Width="180" Height="25" Content="Dlg InputText" Command="{Binding ShowDlgInputTextCmd}" />
+                    <Button Grid.Row="3" Grid.Column="1" Width="180" Height="25" Content="Dlg W-L InputText" Command="{Binding ShowDlg_WL_InputTextCmd}" />
+
+                    <Button Grid.Row="5" Grid.Column="0" Width="180" Height="25" Content="Dlg ComboChoice" Command="{Binding ShowDlgComboChoiceCmd}" />
+                    <Button Grid.Row="5" Grid.Column="1" Width="180" Height="25" Content="Dlg ListChoice" Command="{Binding ShowDlgListChoiceCmd}" />
+                    
+                    <Button Grid.Row="6" Grid.Column="0" Width="180" Height="25" Content="Dlg SelectFile" Command="{Binding ShowDlgSelectFileCmd}" />
+                    <Button Grid.Row="6" Grid.Column="1" Width="180" Height="25" Content="Dlg SaveFile" Command="{Binding ShowDlgSaveFileCmd}" />
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Configuration">
+                <StackPanel VerticalAlignment="Top">
+                    <Label HorizontalAlignment="Left">Language:</Label>
+                    <ComboBox HorizontalAlignment="Left" Width="150" Height="22" 
+                        ItemsSource="{Binding Path=ListCultureCode}"
+                        DisplayMemberPath="Name"
+                        SelectedValue="{Binding Path=CultureCodeSelected}" />
+
+                    <!-- bloc textCode combo+textBox+btns-->
+                    <StackPanel Width="320" HorizontalAlignment="Left" >
+                        <Label>TextCode</Label>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <ComboBox HorizontalAlignment="Left" Width="150" Height="22" Margin="5" 
+                                ItemsSource="{Binding Path=ListStringCode}"
+                                DisplayMemberPath="StringCode"
+                                SelectedValue="{Binding Path=StringCodeSelected}" />
+
+                            <TextBox Text="{Binding StringCodeToEdit}" IsReadOnly="{Binding StringCodeToEditIsReadOnly}"
+                                     KeyDown="TextBox_KeyDown" PreviewKeyDown="TextBox_PreviewKeyDown" PreviewKeyUp="TextBox_PreviewKeyUp"
+                                     Width="150" Margin="5">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding StringCodeToEditKeyDownCmd}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Width="100" Margin="5" Command="{Binding SaveTextCodeCmd}" IsEnabled="{Binding SaveTextCodeIsEnabled}">Save</Button>
+                            <Button Width="100" Margin="5" Command="{Binding CancelTextCodeCmd}" IsEnabled="{Binding CancelTextCodeIsEnabled}">Cancel</Button>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </TabItem>
+            
+            <tc:CloseableTabItem Header="TabItem 3" />
+            <tc:CloseableTabItem Header="TabItem 4" HorizontalAlignment="Left" Name="tabItem1" VerticalAlignment="Top">
+                <Grid></Grid>
+            </tc:CloseableTabItem>
+        </tc:CloseableTabControl>
+
+    </DockPanel>
+</Window>

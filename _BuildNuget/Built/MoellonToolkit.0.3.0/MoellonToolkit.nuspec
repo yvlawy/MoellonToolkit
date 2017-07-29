@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MoellonToolkit</id>
+    <version>0.3</version>
+    <title>MoellonToolkit common dialogs and MVMV base</title>
+    <authors>yvlawy</authors>
+    <owners>yvlawy</owners>
+    <projectUrl>https://github.com/yvlawy/TestDepotYPL</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>definitions</description>
+    <releaseNotes>project description</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>dotnet wpf dialogs</tags>
+  </metadata>
+</package>
