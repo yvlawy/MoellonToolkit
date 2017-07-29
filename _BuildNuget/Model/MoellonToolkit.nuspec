@@ -6,7 +6,7 @@
     <title>MoellonToolkit common dialogs and MVMV base</title>
     <authors>yvlawy</authors>
     <owners>yvlawy</owners>
-    <projectUrl>https://github.com/yvlawy/TestDepotYPL</projectUrl>
+    <projectUrl>https://github.com/yvlawy/MoellonToolkit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Some common dialogs and MVVM base foundation, for WPF applications</description>
     <releaseNotes>project description</releaseNotes>
