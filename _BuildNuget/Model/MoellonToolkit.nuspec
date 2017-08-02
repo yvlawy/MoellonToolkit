@@ -7,7 +7,7 @@
     <authors>yvlawy</authors>
     <owners>yvlawy</owners>
     <projectUrl>https://github.com/yvlawy/MoellonToolkit</projectUrl>
-    <iconUrl>https://github.com/yvlawy/MoellonToolkit/blob/master/_BuildNuget/Model/moellontoolkit.ico</iconUrl>
+    <iconUrl>https://github.com/yvlawy/MoellonToolkit/blob/master/_BuildNuget/Model/moellonToolkit.jpg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Common dialogs and MVVM base foundation for WPF applications</description>
     <releaseNotes>The first published version on github and nuget</releaseNotes>
