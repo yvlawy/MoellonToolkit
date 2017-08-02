@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appli", "Appli", "{3BAB132E-3BC7-47B4-A07F-8EA688915BE2}"
 EndProject
@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_BuildNuget", "_BuildNuget"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{2360DD83-840B-45BD-AE52-5DEA9B294281}"
 	ProjectSection(SolutionItems) = preProject
+		_BuildNuget\Model\moellontoolkit.ico = _BuildNuget\Model\moellontoolkit.ico
 		_BuildNuget\Model\MoellonToolkit.nuspec = _BuildNuget\Model\MoellonToolkit.nuspec
 	EndProjectSection
 EndProject

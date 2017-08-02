@@ -7,6 +7,7 @@
     <authors>yvlawy</authors>
     <owners>yvlawy</owners>
     <projectUrl>https://github.com/yvlawy/MoellonToolkit</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Common dialogs and MVVM base foundation for WPF applications</description>
     <releaseNotes>project description</releaseNotes>
