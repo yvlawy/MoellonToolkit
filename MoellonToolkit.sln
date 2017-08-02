@@ -38,8 +38,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialogs", "Dialogs", "{9DB8B37B-9D7F-43FC-A236-78B5B47616EE}"
 	ProjectSection(SolutionItems) = preProject
 		Docs\Dialogs\dlgComboChoice.jpg = Docs\Dialogs\dlgComboChoice.jpg
-		Docs\Dialogs\dlgConfirmation.jpg = Docs\Dialogs\dlgConfirmation.jpg
 		Docs\Dialogs\dlgError.jpg = Docs\Dialogs\dlgError.jpg
+		Docs\Dialogs\dlgInformation.jpg = Docs\Dialogs\dlgInformation.jpg
 		Docs\Dialogs\dlgInformationWidthXL.jpg = Docs\Dialogs\dlgInformationWidthXL.jpg
 		Docs\Dialogs\dlgInputText.jpg = Docs\Dialogs\dlgInputText.jpg
 		Docs\Dialogs\dlgInputTextWidthLarge.jpg = Docs\Dialogs\dlgInputTextWidthLarge.jpg
