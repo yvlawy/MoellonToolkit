@@ -34,7 +34,7 @@ Update the nuget text file descriptor:
 
 Generate the package:
 (inside Visual Studio, in the nuget console)
-	>cd xxx        
+	>cd _BuildNuget\Built\MoellonToolkit.0.3.0
 	>nuget pack
 
 the result:

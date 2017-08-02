@@ -3,14 +3,14 @@
   <metadata>
     <id>MoellonToolkit</id>
     <version>0.3</version>
-    <title>MoellonToolkit common dialogs and MVMV base</title>
+    <title>MoellonToolkit</title>
     <authors>yvlawy</authors>
     <owners>yvlawy</owners>
     <projectUrl>https://github.com/yvlawy/MoellonToolkit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Some common dialogs and MVVM base foundation, for WPF applications</description>
+    <description>Common dialogs and MVVM base foundation for WPF applications</description>
     <releaseNotes>project description</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>dotnet wpf dialogs</tags>
+    <tags>csharp dotnet wpf dialogs</tags>
   </metadata>
 </package>
