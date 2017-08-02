@@ -11,7 +11,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Common dialogs and MVVM base foundation for WPF applications</description>
     <releaseNotes>The first published version on github and nuget</releaseNotes>
-    <copyright>Copyright 2017</copyright>
-    <tags>csharp dotnet wpf dialogs</tags>
+    <tags>csharp dotnet wpf dialogs mvvm</tags>
   </metadata>
 </package>

@@ -25,14 +25,21 @@ See the images of dialog boxes in the folder: Docs\Dialogs.
 [The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
 
 [The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
+Use the system built-in dialog box.
 
 [The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
+Use the system built-in dialog box.
+
+# Others functionnalities
+You can choose your text translation for titles, labels and buttons used in dialog boxes.
+Today available languages are: gb, fr, es.
+But you can set your own text for each text code: Ok, Cancel, Yes, No,...
 
 # Quick Getting Started 
-Create a WPF project. Create your back-end application controller class, based on the MoellonToolkit base controller.
-Create your View and ViewModel, update the controller.
+Create a WPF project. Create your back-end application controller class based on the MoellonToolkit base controller.
+Create your Views and ViewModels, update the controller.
 
-See the application sample named DevApp provided in the solution in the Dev folder.
+For more details, see the application sample named DevApp provided in the solution in the Dev folder.
 
 # Package is available on Nuget
 https://www.nuget.org/packages/MoellonToolkit
