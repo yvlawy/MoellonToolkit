@@ -7,6 +7,7 @@ These functionalities will enable developers to build solutions very easily.
 See the folder: Docs\Dialogs.
 
 [The Error dialog box](Docs/Dialogs/dlgError.jpg)
+
 [The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
 # Quick Getting Started 
