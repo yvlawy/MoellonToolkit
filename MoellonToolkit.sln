@@ -33,6 +33,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{B019057C-DD68-451C-A081-CCE4C3E31DDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialogs", "Dialogs", "{9DB8B37B-9D7F-43FC-A236-78B5B47616EE}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Docs\liste dlg\dlgComboChoice.jpg = ..\..\Docs\liste dlg\dlgComboChoice.jpg
+		..\..\Docs\liste dlg\dlgConfirmation.jpg = ..\..\Docs\liste dlg\dlgConfirmation.jpg
+		..\..\Docs\liste dlg\dlgError.jpg = ..\..\Docs\liste dlg\dlgError.jpg
+		..\..\Docs\liste dlg\dlgInformationWidthXL.jpg = ..\..\Docs\liste dlg\dlgInformationWidthXL.jpg
+		..\..\Docs\liste dlg\dlgInputText.jpg = ..\..\Docs\liste dlg\dlgInputText.jpg
+		..\..\Docs\liste dlg\dlgInputTextWidthLarge.jpg = ..\..\Docs\liste dlg\dlgInputTextWidthLarge.jpg
+		..\..\Docs\liste dlg\dlgListChoice.jpg = ..\..\Docs\liste dlg\dlgListChoice.jpg
+		..\..\Docs\liste dlg\dlgQuestion.jpg = ..\..\Docs\liste dlg\dlgQuestion.jpg
+		..\..\Docs\liste dlg\dlgSaveFile.jpg = ..\..\Docs\liste dlg\dlgSaveFile.jpg
+		..\..\Docs\liste dlg\dlgSelectFile.jpg = ..\..\Docs\liste dlg\dlgSelectFile.jpg
+		..\..\Docs\liste dlg\dlgWarning.jpg = ..\..\Docs\liste dlg\dlgWarning.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +83,6 @@ Global
 		{5D3C1D59-7575-4C1C-8BAA-7F9575604414} = {3BAB132E-3BC7-47B4-A07F-8EA688915BE2}
 		{2360DD83-840B-45BD-AE52-5DEA9B294281} = {BE0269CB-9FA7-418F-B193-6ACEB4AFA9B8}
 		{F73080FD-6D07-409B-9CD4-D207E81537B5} = {BE0269CB-9FA7-418F-B193-6ACEB4AFA9B8}
+		{9DB8B37B-9D7F-43FC-A236-78B5B47616EE} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
 	EndGlobalSection
 EndGlobal

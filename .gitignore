@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# nuget pacakges built
+_BuildNuget/Built/*
