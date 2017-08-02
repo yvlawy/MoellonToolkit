@@ -10,3 +10,5 @@ Create your View and ViewModel, update the controller.
 
 See the application sample named DevApp provided in the solution in the Dev folder.
 
+# Package is available on Nuget
+https://www.nuget.org/packages/MoellonToolkit

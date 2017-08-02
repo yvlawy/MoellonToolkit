@@ -28,6 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{2360DD83
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Built", "Built", "{F73080FD-6D07-409B-9CD4-D207E81537B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77D3CA46-7890-472E-A619-2DF99999DE83}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
