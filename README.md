@@ -4,11 +4,29 @@ The framework provides a generic back-end application controller with some conve
 These functionalities will enable developers to build solutions very easily. 
 
 # List of implemented dialog boxes
-See the folder: Docs\Dialogs.
+See the images of dialog boxes in the folder: Docs\Dialogs.
 
 [The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
 [The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
+
+[The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
+
+[The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
+
+[The Extra Large Width Information dialog box](Docs/Dialogs/dlgInformationWidthXL.jpg)
+
+[The Input text dialog box](Docs/Dialogs/dlgInputText.jpg)
+
+[The large width Input text dialog box](Docs/Dialogs/dlgInputTextWidthLarge.jpg)
+
+[The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
+
+[The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
+
+[The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
+
+[The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
 
 # Quick Getting Started 
 Create a WPF project. Create your back-end application controller class, based on the MoellonToolkit base controller.
