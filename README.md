@@ -4,7 +4,10 @@ The framework provides a generic back-end application controller with some conve
 These functionalities will enable developers to build solutions very easily. 
 
 # List of implemented dialog boxes
-[Error dialog box](Docs/Dialogs/dlgError.jpg)
+See the folder: Docs\Dialogs.
+
+[The Error dialog box](Docs/Dialogs/dlgError.jpg)
+[The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
 # Quick Getting Started 
 Create a WPF project. Create your back-end application controller class, based on the MoellonToolkit base controller.
