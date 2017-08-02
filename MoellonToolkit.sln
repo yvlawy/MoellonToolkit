@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_BuildNuget", "_BuildNuget"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{2360DD83-840B-45BD-AE52-5DEA9B294281}"
 	ProjectSection(SolutionItems) = preProject
-		_BuildNuget\Model\moellontoolkit.ico = _BuildNuget\Model\moellontoolkit.ico
+		_BuildNuget\Model\moellonToolkit.jpg = _BuildNuget\Model\moellonToolkit.jpg
 		_BuildNuget\Model\MoellonToolkit.nuspec = _BuildNuget\Model\MoellonToolkit.nuspec
 	EndProjectSection
 EndProject
