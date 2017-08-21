@@ -61,6 +61,7 @@ Today available languages are: gb, fr, es.
 But you can set your own text for each text code: Ok, Cancel, Yes, No,...
 
 Set the translation page for text:
+
     commonDlg.SetCurrentCultureInfo(CultureCode.en_GB);
 	
 # Quick Getting Started 
