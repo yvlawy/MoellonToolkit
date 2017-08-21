@@ -6,29 +6,29 @@ These functionalities will enable developers to build solutions very easily.
 # List of implemented dialog boxes
 See the images of dialog boxes in the folder: Docs\Dialogs.
 
-[The Error dialog box](Docs/Dialogs/dlgError.jpg)
+![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
-[The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
+![The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
-[The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
+![The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
 
-[The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
+![The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
 
-[The Extra Large Width Information dialog box](Docs/Dialogs/dlgInformationWidthXL.jpg)
+![The Extra Large Width Information dialog box](Docs/Dialogs/dlgInformationWidthXL.jpg)
 
-[The Input text dialog box](Docs/Dialogs/dlgInputText.jpg)
+![The Input text dialog box](Docs/Dialogs/dlgInputText.jpg)
 
-[The large width Input text dialog box](Docs/Dialogs/dlgInputTextWidthLarge.jpg)
+![The large width Input text dialog box](Docs/Dialogs/dlgInputTextWidthLarge.jpg)
 
-[The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
+![The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
 
-[The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
+![The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
 
-[The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
+![The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
 
 Use the Windows built-in dialog box.
 
-[The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
+![The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
 
 Use the Windows built-in dialog box.
 
