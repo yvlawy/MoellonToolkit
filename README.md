@@ -1,7 +1,5 @@
 # What is MoellonToolkit?
-![The MoellonToolkit framework](Docs/Logo/MoellonToolkit_logo128.jpg)
-
-MoellonToolkit is a small and basic framework designed for building WPF applications with the focus on the MVVM pattern.
+![The MoellonToolkit framework](Docs/Logo/MoellonToolkit_logo128.jpg) MoellonToolkit is a small and basic framework designed for building WPF applications with the focus on the MVVM pattern.
 The framework provides a generic back-end application controller with some convenient ready to use dialog boxes like: Error, Warning, Question, Information, InputText, Select Text,...
 These functionalities will enable developers to build solutions very easily. 
 The framework is developed in C# 4.0.  
@@ -10,12 +8,15 @@ The framework is developed in C# 4.0.
 See the images of dialog boxes in the folder: Docs\Dialogs.
 
 The classic error message.
+
 ![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
 The Information message.
+
 ![The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
 The Warning message.
+
 ![The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
 
 ![The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
