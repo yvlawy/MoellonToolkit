@@ -25,10 +25,12 @@ See the images of dialog boxes in the folder: Docs\Dialogs.
 [The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
 
 [The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
-Use the system built-in dialog box.
+
+Use the Windows built-in dialog box.
 
 [The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
-Use the system built-in dialog box.
+
+Use the Windows built-in dialog box.
 
 # Others functionnalities
 You can choose your text translation for titles, labels and buttons used in dialog boxes.
@@ -46,11 +48,11 @@ You can just use the common dialog boxes provided by the framework, with or with
 
 Use the ICommonDlg interface and the concrete implementation CommonDlg.
 
-ICommonDlg commonDlg = new CommonDlg();
+    ICommonDlg commonDlg = new CommonDlg();
 
 Sample:	Display a dialog box asking the user to confirm the application exit, has 2 buttons; ok and cancel.
 
-if (commonDlg.ShowDlg(WHSize.WL_HL, "Confirmation", "Do you really want to exit the application?", CommonDlgIcon.Question, CommonDlgButtons.OkCancel) != CommonDlgResult.Ok)
+    if (commonDlg.ShowDlg(WHSize.WL_HL, "Confirmation", "Do you really want to exit the application?", CommonDlgIcon.Question, CommonDlgButtons.OkCancel) != CommonDlgResult.Ok)
 		return false;
 
 The first parameter set the Width and the Height size of the dialog box: 
