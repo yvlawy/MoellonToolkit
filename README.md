@@ -7,16 +7,13 @@ The framework is developed in C# 4.0.
 # List of implemented dialog boxes
 See the images of dialog boxes in the folder: Docs\Dialogs.
 
-The classic error message.
-
+The classic error message:
 ![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
-The Information message.
-
+The Information message:
 ![The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
-The Warning message.
-
+The Warning message:
 ![The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
 
 ![The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
