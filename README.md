@@ -44,7 +44,7 @@ Create your Views and ViewModels, update the controller.
 For more details, see the application sample named DevApp provided in the solution in the Dev folder.
 
 ## Use defined dialog boxes
-You can just use the common dialog boxes provided by the framework, with or without the back-office application controller.
+You can just use the common dialog boxes provided by the framework, without the back-office application controller.
 
 Use the ICommonDlg interface and the concrete implementation CommonDlg.
 
