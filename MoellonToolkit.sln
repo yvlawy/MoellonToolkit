@@ -53,9 +53,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logo", "Logo", "{659D185D-A870-4BE7-8484-CA5C18A9C7B2}"
 	ProjectSection(SolutionItems) = preProject
 		Docs\Logo\MellonToolkit_logo_192.ico = Docs\Logo\MellonToolkit_logo_192.ico
-		Docs\Logo\MoellonToolkit _logo128.jpg = Docs\Logo\MoellonToolkit _logo128.jpg
 		Docs\Logo\MoellonToolkit _logo256.jpg = Docs\Logo\MoellonToolkit _logo256.jpg
 		Docs\Logo\MoellonToolkit_logo128.ico = Docs\Logo\MoellonToolkit_logo128.ico
+		Docs\Logo\MoellonToolkit_logo128.jpg = Docs\Logo\MoellonToolkit_logo128.jpg
 		Docs\Logo\MoellonToolkit_logo16.ico = Docs\Logo\MoellonToolkit_logo16.ico
 		Docs\Logo\MoellonToolkit_logo32.ico = Docs\Logo\MoellonToolkit_logo32.ico
 		Docs\Logo\MoellonToolkit_logo_48.ico = Docs\Logo\MoellonToolkit_logo_48.ico
