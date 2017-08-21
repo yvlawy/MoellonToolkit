@@ -7,29 +7,48 @@ The framework is developed in C# 4.0.
 # List of implemented dialog boxes
 See the images of dialog boxes in the folder: Docs\Dialogs.
 
-The classic error message:
+The classic error message box:
+
 ![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
-The Information message:
+The Information message box:
+
 ![The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
-The Warning message:
+The Warning message box:
+
 ![The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
+
+The Question message box:
 
 ![The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
 
+The Extra Large Width Information message box:
+
 ![The Extra Large Width Information dialog box](Docs/Dialogs/dlgInformationWidthXL.jpg)
+
+The Input text message box:
 
 ![The Input text dialog box](Docs/Dialogs/dlgInputText.jpg)
 
+The large width Input text message box:
+
 ![The large width Input text dialog box](Docs/Dialogs/dlgInputTextWidthLarge.jpg)
+
+The combo choice dialog box:
 
 ![The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
 
+The list choice dialog box:
+
 ![The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
+
+The select file  dialog box:
+Use the Windows built-in dialog box.
 
 ![The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
 
+The save file  dialog box:
 Use the Windows built-in dialog box.
 
 ![The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
