@@ -44,22 +44,25 @@ The list choice dialog box:
 ![The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
 
 The select file  dialog box:
-Use the Windows built-in dialog box.
+(Use the Windows built-in dialog box.)
 
 ![The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
 
 The save file  dialog box:
-Use the Windows built-in dialog box.
+
+(Use the Windows built-in dialog box).
 
 ![The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
 
-Use the Windows built-in dialog box.
 
 # Others functionnalities
 You can choose your text translation for titles, labels and buttons used in dialog boxes.
 Today available languages are: gb, fr, es.
 But you can set your own text for each text code: Ok, Cancel, Yes, No,...
 
+Set the translation page for text:
+    commonDlg.SetCurrentCultureInfo(CultureCode.en_GB);
+	
 # Quick Getting Started 
 Create a WPF project. Create your back-end application controller class based on the MoellonToolkit base controller.
 Create your Views and ViewModels, update the controller.
