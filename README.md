@@ -6,26 +6,26 @@ The framework is developed in C# 4.0.
 
 # List of implemented dialog boxes
 
-## The classic error message box:
+## The classic error message box
 
 	commonDlg.ShowError("You're wrong.");
 
 ![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
-## The Information message box:
+## The Information message box
 
 	commonDlg.ShowInformation("Yes, you like dogs.");
 
 ![The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
-## The Warning message box:
+## The Warning message box
 
 	commonDlg.ShowWarning("Be carefull!");
 
 ![The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
 
 
-## The Question message box:
+## The Question message box
 
 	commonDlg.ShowQuestion("Do you like dogs?");
 
@@ -41,7 +41,7 @@ The framework is developed in C# 4.0.
 ![The Extra Large Width Information dialog box](Docs/Dialogs/dlgInformationWidthXL.jpg)
 
 
-## The Input text message box:
+## The Input text message box
 
 	string text;
     CommonDlgResult res = commonDlg.ShowDlgInputText("Input", "Give a name:", "name", out text);
@@ -51,7 +51,7 @@ The framework is developed in C# 4.0.
 ![The Input text dialog box](Docs/Dialogs/dlgInputText.jpg)
 
 
-## The large width Input text message box:
+## The large width Input text message box
 
 	string text;
     CommonDlgResult res = commonDlg.ShowDlgInputText(WHSize.WL, "Input", "Give a name:", "name", out text);
@@ -61,7 +61,7 @@ The framework is developed in C# 4.0.
 ![The large width Input text dialog box](Docs/Dialogs/dlgInputTextWidthLarge.jpg)
 
 
-## The combo choice dialog box:
+## The combo choice dialog box
 
 	List<DlgComboChoiceItem> listItem = new List<DlgComboChoiceItem>();
     DlgComboChoiceItem selectedBeforeItem = null;
@@ -87,7 +87,7 @@ The framework is developed in C# 4.0.
 
 ![The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
 
-## The list choice dialog box:
+## The list choice dialog box
 
 	List<DlgListChoiceItem> listItem = new List<DlgListChoiceItem>();
     List<DlgListChoiceItem> listSelectedBeforeItem = null;
@@ -113,7 +113,7 @@ The framework is developed in C# 4.0.
 ![The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
 
 
-## The select file  dialog box:
+## The select file  dialog box
 (Use the Windows built-in dialog box.)
 
 	res = commonDlg.ShowDlgSelectFile("C\\", "*.*", "All | *.*", out pathName, out fileName);
@@ -123,8 +123,7 @@ The framework is developed in C# 4.0.
 ![The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
 
 
-## The save file  dialog box:
-
+## The save file  dialog box 
 (Use the Windows built-in dialog box).
 
 	res = commonDlg.ShowDlgSaveFile("C\\", "", "All | *.*", out pathName, out fileName);
