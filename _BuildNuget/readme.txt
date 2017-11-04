@@ -18,14 +18,15 @@ Process:
 Create a target folder:
 Built\MoellonToolkit.x.x.x.x\
 
+Copy the model folders.
 
 Copy the 3 dll libraries:
+	(from the folder: Dev\DevApp\bin\debug)
 	MoellonToolkit.CommonDlgs.Defs.dll
 	MoellonToolkit.CommonDlgs.Impl.dll
 	MoellonToolkit.MVVMBase.dll
 
 	into the path:
-		(from the folder: Dev\DevApp\bin\debug)
 		Model\lib\net40\
 
 
@@ -43,3 +44,6 @@ the result:
 		MoellonToolkit.x.X.x.x.nupkg
 
 then, publish the generated file on the nuget website.
+Sign in, 
+Upload the packet:
+	Built\MoellonToolkit.x.x.x.x\MoellonToolkit.x.X.x.x.nupkg

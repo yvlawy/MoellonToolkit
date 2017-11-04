@@ -2,15 +2,16 @@
 <package >
   <metadata>
     <id>MoellonToolkit</id>
-    <version>0.3</version>
+    <version>0.3.1</version>
     <title>MoellonToolkit</title>
     <authors>yvlawy</authors>
     <owners>yvlawy</owners>
     <projectUrl>https://github.com/yvlawy/MoellonToolkit</projectUrl>
     <iconUrl>https://github.com/yvlawy/MoellonToolkit/blob/master/_BuildNuget/Model/moellonToolkit.jpg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>MoellonToolkit is a small and basic framework designed for building WPF applications with the focus on the MVVM pattern. The framework provides a generic back-end application controller with some convenient ready to use dialog boxes like: Error, Warning, Question, Information, InputText, Select Text,... These functionalities will enable developers to build solutions very easily. The framework is developed in C# 4.0.</description>
-    <releaseNotes>The first published version on github and nuget</releaseNotes>
+    <description>Common dialogs and MVVM base foundation for WPF applications.</description>
+    <summary>MoellonToolkit is a small and basic framework designed for building WPF applications with the focus on the MVVM pattern. The framework provides a generic back-end application controller with some convenient ready to use dialog boxes like: Error, Warning, Question, Information, InputText, Select Text,... These functionalities will enable developers to build solutions very easily. The framework is developed in C# 4.0.</summary>
+    <releaseNotes>See the gitHub main page : https://github.com/yvlawy/MoellonToolkit which describes the fonctionnalities of the library.</releaseNotes>
     <tags>csharp dotnet wpf dialogs mvvm</tags>
   </metadata>
 </package>
