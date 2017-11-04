@@ -6,34 +6,33 @@ The framework is developed in C# 4.0.
 
 # List of implemented dialog boxes
 
-The classic error message box:
+##The classic error message box:
 
 	commonDlg.ShowError("You're wrong.");
 
 ![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
-The Information message box:
+##The Information message box:
 
 	commonDlg.ShowInformation("Yes, you like dogs.");
 
 ![The Information dialog box](Docs/Dialogs/dlgInformation.jpg)
 
-
-The Warning message box:
+##The Warning message box:
 
 	commonDlg.ShowWarning("Be carefull!");
 
 ![The Warning dialog box](Docs/Dialogs/dlgWarning.jpg)
 
 
-The Question message box:
+##The Question message box:
 
 	commonDlg.ShowQuestion("Do you like dogs?");
 
 ![The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
 
 
-The Extra Large Width Information message box:
+##The Extra Large Width Information message box:
 
 	string msg = "Yes, you like dogs, cats, birds, horses, worms, lions, ants, girafs, rabbits, ...";
 	commonDlg.ShowInformation(WHSize.WXL, msg);
@@ -42,7 +41,7 @@ The Extra Large Width Information message box:
 ![The Extra Large Width Information dialog box](Docs/Dialogs/dlgInformationWidthXL.jpg)
 
 
-The Input text message box:
+##The Input text message box:
 
 	string text;
     CommonDlgResult res = commonDlg.ShowDlgInputText("Input", "Give a name:", "name", out text);
@@ -52,7 +51,7 @@ The Input text message box:
 ![The Input text dialog box](Docs/Dialogs/dlgInputText.jpg)
 
 
-The large width Input text message box:
+##The large width Input text message box:
 
 	string text;
     CommonDlgResult res = commonDlg.ShowDlgInputText(WHSize.WL, "Input", "Give a name:", "name", out text);
@@ -62,11 +61,8 @@ The large width Input text message box:
 ![The large width Input text dialog box](Docs/Dialogs/dlgInputTextWidthLarge.jpg)
 
 
-The combo choice dialog box:
+##The combo choice dialog box:
 
-![The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
-
-The list choice dialog box:
 
 	List<DlgComboChoiceItem> listItem = new List<DlgComboChoiceItem>();
     DlgComboChoiceItem selectedBeforeItem = null;
@@ -90,10 +86,35 @@ The list choice dialog box:
     if (res == CommonDlgResult.Ok)
 	{...}
 
+![The combo choice dialog box](Docs/Dialogs/dlgComboChoice.jpg)
+
+##The list choice dialog box:
+
+	List<DlgListChoiceItem> listItem = new List<DlgListChoiceItem>();
+    List<DlgListChoiceItem> listSelectedBeforeItem = null;
+
+    // create some object
+    List<string> listString = new List<string>();
+    listString.Add("Au revoir");
+    listString.Add("salut");
+    listString.Add("bye");
+    listString.Add("tchao");
+
+    foreach (string s in listString)
+    {
+        var item = new DlgListChoiceItem(s, s);
+        listItem.Add(item);
+    }
+
+    List<DlgListChoiceItem> listSelected;
+    CommonDlgResult res = commonDlg.ShowDlgListChoice("Choose it", listItem, listSelectedBeforeItem, out listSelected);
+	if (res == CommonDlgResult.Ok)
+	{...}
+
 ![The list choice dialog box](Docs/Dialogs/dlgListChoice.jpg)
 
 
-The select file  dialog box:
+##The select file  dialog box:
 (Use the Windows built-in dialog box.)
 
 	res = commonDlg.ShowDlgSelectFile("C\\", "*.*", "All | *.*", out pathName, out fileName);
@@ -103,7 +124,7 @@ The select file  dialog box:
 ![The select file  dialog box](Docs/Dialogs/dlgSelectFile.jpg)
 
 
-The save file  dialog box:
+##The save file  dialog box:
 
 (Use the Windows built-in dialog box).
 
