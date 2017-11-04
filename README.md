@@ -5,9 +5,10 @@ These functionalities will enable developers to build solutions very easily.
 The framework is developed in C# 4.0.  
 
 # List of implemented dialog boxes
-See the images of dialog boxes in the folder: Docs\Dialogs.
 
 The classic error message box:
+
+	commonDlg.ShowError("No, you don't like dogs.");
 
 ![The Error dialog box](Docs/Dialogs/dlgError.jpg)
 
@@ -53,6 +54,8 @@ The save file  dialog box:
 (Use the Windows built-in dialog box).
 
 ![The save file  dialog box](Docs/Dialogs/dlgSaveFile.jpg)
+
+The images of these dialog boxes are the folder: Docs\Dialogs.
 
 
 # Others functionnalities

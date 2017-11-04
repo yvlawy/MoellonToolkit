@@ -52,8 +52,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="_src\Ctrls\CloseableTabControl\CloseableTabControl.cs" />
-    <Compile Include="_src\Ctrls\CloseableTabControl\CloseableTabItem.cs" />
+    <Compile Include="_src\Components\CloseableTabControl\CloseableTabControl.cs" />
+    <Compile Include="_src\Components\CloseableTabControl\CloseableTabItem.cs" />
     <Compile Include="_src\Managers\CommonDlg.cs" />
     <Compile Include="_src\Managers\CoreSystem.cs" />
     <Compile Include="_src\Managers\ImageProvider.cs" />
