@@ -32,7 +32,7 @@ The framework is developed in C# 4.0.
 ![The Question dialog box](Docs/Dialogs/dlgQuestion.jpg)
 
 
-## The Extra Large Width Information message box:
+## The Extra Large Width Information message box
 
 	string msg = "Yes, you like dogs, cats, birds, horses, worms, lions, ants, girafs, rabbits, ...";
 	commonDlg.ShowInformation(WHSize.WXL, msg);
