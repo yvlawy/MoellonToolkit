@@ -54,6 +54,26 @@
     </Compile>
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabControl.cs" />
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabItem.cs" />
+    <Compile Include="_src\Components\DynDataGrid\GridColMapping\AttachedColumnBehavior.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Impl\GridColumnBaseVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\GridColMapping\GridBoundColumn.cs" />
+    <Compile Include="_src\Components\DynDataGrid\IGridCellVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IDynDataGrid.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IGridCell.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IGridColumn.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IGridColumnString.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IGridRow.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Impl\DynDataGrid.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridCellBase.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridCellString.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridColumnString.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridRow.cs" />
+    <Compile Include="_src\Components\FocusAttacher.cs" />
+    <Compile Include="_src\Components\DynDataGrid\IGridColumnVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\IGridCellValueVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\IGridRowVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\GridColMapping\GridMappingCellsBase.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Impl\RowGridBaseVM.cs" />
     <Compile Include="_src\Managers\CommonDlg.cs" />
     <Compile Include="_src\Managers\CoreSystem.cs" />
     <Compile Include="_src\Managers\ImageProvider.cs" />
@@ -241,6 +261,7 @@
     <None Include="Resources\Button-Close-icon.png" />
     <None Include="Resources\Image1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

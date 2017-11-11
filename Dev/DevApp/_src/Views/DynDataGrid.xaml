@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="DevApp.Views.DynDataGrid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DevApp.Views"
+        xmlns:vm="clr-namespace:DevApp.ViewModels"
+        xmlns:tc="clr-namespace:MoellonToolkit.CommonDlgs.Impl.Components;assembly=MoellonToolkit.CommonDlgs.Impl"
+        mc:Ignorable="d"
+        MinHeight="100" MinWidth="100">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="headerTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Name}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="cellTemplate">
+            <!--<DataTemplate.Resources>
+                <tc:RowAndColumnMultiValueConverter x:Key="Converter"/>
+            </DataTemplate.Resources>-->
+            <!-- display a cell value or a row relation button -->
+            <ContentPresenter Content="{Binding}" />
+            <!--<StackPanel>
+                    <TextBlock Text="{Binding Value}" />
+            </StackPanel>-->
+        </DataTemplate>
+
+        <DataTemplate x:Key="cellEditingTemplate">
+            <!-- <DataTemplate.Resources>
+                <vm:RowAndColumnMultiValueConverter x:Key="Converter" />
+            </DataTemplate.Resources>-->
+            <TextBox Text="{Binding Cell, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" tc:FocusAttacher.Focus="True" Foreground="Red" IsReadOnly="{Binding IsReadOnly}"/>
+        </DataTemplate>
+
+        <!-- display a value cell -->
+        <DataTemplate DataType="{x:Type vm:GridCellValueVM}"> 
+            <TextBlock Text="{Binding Cell}" IsEnabled="False"/>
+        <!-- <TextBox Text="{Binding Value}" IsReadOnly="{Binding IsReadOnly}"></TextBox> -->
+        </DataTemplate>
+        
+        
+        <!-- display a button cell -->
+        <!--
+        <DataTemplate DataType="{x:Type vm:GridCellButtonVM}">
+            <Button .. />
+        </DataTemplate>-->
+
+    </UserControl.Resources>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Right">
+            <Button Width="40" Margin="2" Command="{Binding AddColCmd}">C+</Button>
+            <Button Width="40" Margin="2" Command="{Binding DelColCmd}">C-</Button>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Width="40" Margin="2" Command="{Binding AddRowCmd}">R+</Button>
+            <Button Width="40" Margin="2" Command="{Binding DelRowCmd}">R-</Button>
+        </StackPanel>
+
+        <!-- insere dynDataGrid -->
+        <!--tc:AttachedColumnBehavior.MappedValues="{Binding CollCell}" -->
+        <DataGrid ItemsSource="{Binding CollDataRow}" x:Name="myGrid" 
+                      tc:AttachedColumnBehavior.HeaderTemplate="{StaticResource headerTemplate}"
+                      tc:AttachedColumnBehavior.AttachedCellTemplate="{StaticResource cellTemplate}"
+                      tc:AttachedColumnBehavior.AttachedColumns="{Binding CollColumnGrid}"
+                      tc:AttachedColumnBehavior.AttachedCellEditingTemplate="{StaticResource cellEditingTemplate}"
+                      tc:AttachedColumnBehavior.MappedCells="{Binding CollCell}" 
+                      AutoGenerateColumns="False"
+                      SelectedItem="{Binding SelectedItem}" >
+
+            <!--
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="IsTabStop" Value="True" />
+                            <Setter Property="Focusable" Value="True" />
+                        </Style>
+                    </DataGrid.CellStyle>
+                    -->
+
+            <!--
+            <DataGrid.RowDetailsTemplate>-->
+                <!-- the board: one or more dataGrid rows details -->
+            <!--
+                <DataTemplate> 
+                    <ItemsControl ItemsSource="{Binding CollDataListGridRowDetailVM }" /> -->
+                    <!--<ListBox ItemsSource="{Binding ListDetailText}" Width="80" Margin="0,5,0,10"/>-->
+                <!--</DataTemplate>-->
+            <!--</DataGrid.RowDetailsTemplate>-->
+        </DataGrid>
+    </DockPanel>
+
+</UserControl>

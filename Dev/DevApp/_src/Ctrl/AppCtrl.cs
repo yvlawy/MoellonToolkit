@@ -3,6 +3,7 @@ using DevApp.Mgr;
 using DevApp.ViewModels;
 using DevApp.Views;
 using MoellonToolkit.CommonDlgs.Defs;
+using MoellonToolkit.CommonDlgs.Impl.Components;
 using MoellonToolkit.MVVMBase;
 using NLog;
 using System;
@@ -53,6 +54,7 @@ namespace DevApp.Ctrl
 
             base.ShutDown += AppCtrl_ShutDown;
             MessengerRegisterActions();
+            InitData();
         }
 
         //=====================================================================
@@ -63,6 +65,11 @@ namespace DevApp.Ctrl
         /// Specifics dialog box of the application (not common).
         /// </summary>
         public IAppDlg AppDlg { get { return _appDlg; } }
+
+        /// <summary>
+        /// A datagrid to test the dynamic data grid UI.
+        /// </summary>
+        public IDynDataGrid DataGrid { get; private set; }
 
         #endregion
 
@@ -225,7 +232,7 @@ namespace DevApp.Ctrl
             _splashScreen.Show();
 
             // start the timer to close the splash
-            _timer = new System.Timers.Timer(1000);
+            _timer = new System.Timers.Timer(300);
             _timer.Elapsed += new ElapsedEventHandler(_timer_Elapsed);
             _timer.Enabled = true;
 
@@ -272,6 +279,30 @@ namespace DevApp.Ctrl
             CommonDlg.SetUserDefinedTranslatedText(StringCode.Ok, "User-Ok");
 
             CommonDlg.SetUserDefinedTranslatedText(StringCode.Yes, "User-Yes");
+        }
+
+        private void InitData()
+        {
+            DataGrid = new MoellonToolkit.CommonDlgs.Impl.Components.DynDataGrid();
+
+            //create columns
+            IGridColumnString columnKey = new GridColumnString("Key");
+            columnKey.IsEditionReadOnly = true;
+            DataGrid.AddColumn(columnKey);
+            IGridColumnString columnValue = new GridColumnString("Value");
+            DataGrid.AddColumn(columnValue);
+
+            // create data rows
+            IGridRow row = new GridRow(DataGrid);
+
+            // create data cells
+            IGridCell cell = new GridCellString(columnKey, "keyYes");
+            row.AddCell(cell);
+            cell = new GridCellString(columnValue, "Oui");
+            row.AddCell(cell);
+
+            // TODO:
+            DataGrid.AddRow(row);
         }
         #endregion
 

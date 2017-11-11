@@ -98,6 +98,11 @@
                     
                 </StackPanel>
             </TabItem>
+
+            <TabItem Header="DynDataTable">
+                <!-- insere dynDataGrid -->
+                <ContentPresenter Content="{Binding DynDataGridVM}"></ContentPresenter>
+            </TabItem>
             
             <tc:CloseableTabItem Header="TabItem 3" />
             <tc:CloseableTabItem Header="TabItem 4" HorizontalAlignment="Left" Name="tabItem1" VerticalAlignment="Top">

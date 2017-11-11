@@ -68,13 +68,30 @@
     <Compile Include="_src\Mgr\IAppDlg.cs" />
     <Compile Include="_src\ViewModels\AppMainMenuVM.cs" />
     <Compile Include="_src\ViewModels\CultureCodeVM.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\ColumnGridStringVM.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\GridColumnVM.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\DynDataGridVM.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\GridCellValueVM.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\GridMappingCell.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\GridRowVM.cs" />
     <Compile Include="_src\ViewModels\MainVM.cs" />
     <Compile Include="_src\ViewModels\SplashScreenVM.cs" />
     <Compile Include="_src\ViewModels\StringCodeVM.cs" />
     <Compile Include="_src\ViewModels\TextTranslationVM.cs" />
+    <Compile Include="_src\Views\DynDataGrid.xaml.cs">
+      <DependentUpon>DynDataGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\Views\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="_src\resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_src\Views\DynDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="_src\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,7 +151,9 @@
       <Name>MoellonToolkit.MVVMBase</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="_src\DataModel\DynDataGrid\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

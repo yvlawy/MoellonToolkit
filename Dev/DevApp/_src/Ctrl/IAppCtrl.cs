@@ -1,4 +1,5 @@
 ﻿using DevApp.Enums;
+using MoellonToolkit.CommonDlgs.Impl.Components;
 using MoellonToolkit.MVVMBase;
 
 namespace DevApp.Ctrl
@@ -13,5 +14,9 @@ namespace DevApp.Ctrl
 
         bool StartApp();
 
+        /// <summary>
+        /// A datagrid to test the dynamic data grid UI.
+        /// </summary>
+        IDynDataGrid DataGrid { get;  }
     }
 }

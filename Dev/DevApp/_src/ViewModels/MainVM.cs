@@ -135,6 +135,9 @@ namespace DevApp.ViewModels
             }
         }
 
+        public DynDataGridVM DynDataGridVM
+        { get; set; }
+
         #endregion
 
         //=====================================================================		
@@ -1002,6 +1005,8 @@ namespace DevApp.ViewModels
                 StringCodeVM stringCodeVM = new StringCodeVM(stringCode);
                 _listStringCode.Add(stringCodeVM);
             }
+
+            DynDataGridVM = new DynDataGridVM(AppCtrlProvider.AppCtrl.DataGrid);
         }
 
         /// <summary>
