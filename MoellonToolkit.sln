@@ -68,6 +68,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 		Docs\Components\dynamicTabControl.jpg = Docs\Components\dynamicTabControl.jpg
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVVM", "MVVM", "{3075D058-DD86-4F72-872A-8B13F8DE7286}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\MVVM\clickOnTheExitMenu.jpg = Docs\MVVM\clickOnTheExitMenu.jpg
+		Docs\MVVM\clickOnTheXofTheWindow.jpg = Docs\MVVM\clickOnTheXofTheWindow.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,5 +110,6 @@ Global
 		{9DB8B37B-9D7F-43FC-A236-78B5B47616EE} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
 		{659D185D-A870-4BE7-8484-CA5C18A9C7B2} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
 		{854B4D1D-234F-4FB6-8D4E-00A795A044EA} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
+		{3075D058-DD86-4F72-872A-8B13F8DE7286} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
 	EndGlobalSection
 EndGlobal
