@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
-    public class GridCellString : GridCellBase
+    public class GridCellString : GridCellBase, IGridCellValue
     {
         public GridCellString(IGridColumnString column, string value):base(column)
         {

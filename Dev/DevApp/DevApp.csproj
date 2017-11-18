@@ -68,7 +68,7 @@
     <Compile Include="_src\Mgr\IAppDlg.cs" />
     <Compile Include="_src\ViewModels\AppMainMenuVM.cs" />
     <Compile Include="_src\ViewModels\CultureCodeVM.cs" />
-    <Compile Include="_src\ViewModels\DynaDataGrid\ColumnGridStringVM.cs" />
+    <Compile Include="_src\ViewModels\DynaDataGrid\GridColumnStringVM.cs" />
     <Compile Include="_src\ViewModels\DynaDataGrid\GridColumnVM.cs" />
     <Compile Include="_src\ViewModels\DynaDataGrid\DynDataGridVM.cs" />
     <Compile Include="_src\ViewModels\DynaDataGrid\GridCellValueVM.cs" />
@@ -152,7 +152,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="_src\DataModel\DynDataGrid\" />
+    <Folder Include="_src\DataModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

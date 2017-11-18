@@ -54,12 +54,14 @@
     </Compile>
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabControl.cs" />
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabItem.cs" />
-    <Compile Include="_src\Components\DynDataGrid\GridColMapping\AttachedColumnBehavior.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Impl\GridColumnBaseVM.cs" />
-    <Compile Include="_src\Components\DynDataGrid\GridColMapping\GridBoundColumn.cs" />
-    <Compile Include="_src\Components\DynDataGrid\IGridCellVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\AttachedColumnBehavior.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridColumnBaseVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\GridBoundColumn.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridCellVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IDynDataGrid.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IGridCell.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IGridCellComponent.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\IGridCellValue.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IGridColumn.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IGridColumnString.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IGridRow.cs" />
@@ -69,11 +71,11 @@
     <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridColumnString.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridRow.cs" />
     <Compile Include="_src\Components\FocusAttacher.cs" />
-    <Compile Include="_src\Components\DynDataGrid\IGridColumnVM.cs" />
-    <Compile Include="_src\Components\DynDataGrid\IGridCellValueVM.cs" />
-    <Compile Include="_src\Components\DynDataGrid\IGridRowVM.cs" />
-    <Compile Include="_src\Components\DynDataGrid\GridColMapping\GridMappingCellsBase.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Impl\RowGridBaseVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridColumnVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridCellValueVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridRowVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\GridMappingCellsBase.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\RowGridBaseVM.cs" />
     <Compile Include="_src\Managers\CommonDlg.cs" />
     <Compile Include="_src\Managers\CoreSystem.cs" />
     <Compile Include="_src\Managers\ImageProvider.cs" />

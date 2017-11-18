@@ -290,6 +290,13 @@ namespace DevApp.ViewModels
             foreach(IGridRow gridRow in _datagrid.ListRow)
             {
                 // depending on the type of the new column
+                IGridColumnString colString = column as IGridColumnString;
+
+                if(colString!= null)
+                {
+                    // TODO: ??
+                    //IGridCell cell= new 
+                }
                 //IGridCell 
             }
             //ici();  // and the VM?

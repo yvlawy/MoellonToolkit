@@ -61,6 +61,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logo", "Logo", "{659D185D-A
 		Docs\Logo\MoellonToolkit_logo_48.ico = Docs\Logo\MoellonToolkit_logo_48.ico
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{854B4D1D-234F-4FB6-8D4E-00A795A044EA}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Pictures\dynamicTabControl-highlight.jpg = ..\..\..\..\..\..\Pictures\dynamicTabControl-highlight.jpg
+		..\..\..\..\..\..\Pictures\dynamicTabControl.jpg = ..\..\..\..\..\..\Pictures\dynamicTabControl.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,5 +102,6 @@ Global
 		{F73080FD-6D07-409B-9CD4-D207E81537B5} = {BE0269CB-9FA7-418F-B193-6ACEB4AFA9B8}
 		{9DB8B37B-9D7F-43FC-A236-78B5B47616EE} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
 		{659D185D-A870-4BE7-8484-CA5C18A9C7B2} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
+		{854B4D1D-234F-4FB6-8D4E-00A795A044EA} = {B019057C-DD68-451C-A081-CCE4C3E31DDA}
 	EndGlobalSection
 EndGlobal

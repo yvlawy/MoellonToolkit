@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
+    /// <summary>
+    /// Base of all grid cell: value and component.
+    /// </summary>
     public abstract class GridCellBase: IGridCell
     {
         public GridCellBase(IGridColumn column)
