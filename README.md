@@ -1,5 +1,3 @@
-
-
 # What is MoellonToolkit?
 ![The MoellonToolkit framework](Docs/Logo/MoellonToolkit_logo128.jpg) MoellonToolkit is a library providing a set of convenient ready to use dialog boxes like: Error, Warning, Question, Information, InputText, Select Text,... MoellonToolkit contains also one component: a TabControl with closable TabItem Headers. 
 
@@ -15,3 +13,7 @@ https://github.com/yvlawy/MoellonToolkit/wiki
 
 # Package is available on Nuget
 https://www.nuget.org/packages/MoellonToolkit
+
+
+# More explanations on the blog
+http://yvlawy.blogspot.fr/
