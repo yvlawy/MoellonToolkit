@@ -66,6 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 		Docs\Components\dynamicTabControl-highlight.jpg = Docs\Components\dynamicTabControl-highlight.jpg
 		Docs\Components\dynamicTabControl-tabItemClosed.jpg = Docs\Components\dynamicTabControl-tabItemClosed.jpg
 		Docs\Components\dynamicTabControl.jpg = Docs\Components\dynamicTabControl.jpg
+		Docs\Components\dynDataGrid-use-mainView.jpg = Docs\Components\dynDataGrid-use-mainView.jpg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVVM", "MVVM", "{3075D058-DD86-4F72-872A-8B13F8DE7286}"
