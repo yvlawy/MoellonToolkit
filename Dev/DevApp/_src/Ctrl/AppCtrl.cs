@@ -284,26 +284,36 @@ namespace DevApp.Ctrl
         private void InitData()
         {
             DataGrid = new MoellonToolkit.CommonDlgs.Impl.Components.DynDataGrid();
-
-            //create columns
+            
+            //----create columns
             IGridColumnString columnKey = new GridColumnString("Key");
             columnKey.IsEditionReadOnly = true;
             DataGrid.AddColumn(columnKey);
             IGridColumnString columnValue = new GridColumnString("Value");
             DataGrid.AddColumn(columnValue);
 
+            // $TASK-003: col checkbox
+            IGridColumnCheckBox columnCheck = new GridColumnCheckBox("check");
+            DataGrid.AddColumn(columnCheck);
+
             // create data rows
             IGridRow row = new GridRow(DataGrid);
 
-            // create data cells
+            //----create data cells
             IGridCell cell = new GridCellString(columnKey, "keyYes");
             row.AddCell(cell);
             cell = new GridCellString(columnValue, "Oui");
             row.AddCell(cell);
+            // checked by default
+            cell = new GridCellCheckBox(columnCheck, true);
+            row.AddCell(cell);
+
 
             // TODO:
             DataGrid.AddRow(row);
         }
+
+
         #endregion
 
     }

@@ -54,22 +54,43 @@
     </Compile>
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabControl.cs" />
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabItem.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Factories\DynDataGridFactory.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Factories\DynDataGridFactoryBase.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Factories\IDynDataGridFactory.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Cell\IGridCellCheckBox.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnCheckBox.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnComponent.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnValue.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridCellCheckBox.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridColumnCheckBox.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\DynDataGridVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\AttachedColumnBehavior.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\GridMappingCell.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridCellComponentVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridCellCheckBoxVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridCellValueVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridColumnBaseVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\GridBoundColumn.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridCellVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IDynDataGrid.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\IGridCell.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\IGridCellComponent.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\IGridCellValue.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\IGridColumn.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\IGridColumnString.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Cell\IGridCell.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Cell\IGridCellComponent.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Cell\IGridCellValue.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumn.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnString.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\IGridRow.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\Impl\DynDataGrid.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridCellBase.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridCellString.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridColumnString.cs" />
-    <Compile Include="_src\Components\DynDataGrid\Model\Impl\GridRow.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\DynDataGrid.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridCellBase.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridCellString.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridColumnString.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridRow.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridColumnCheckBoxVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridColumnStringVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridColumnVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\GridRowVM.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Views\DynDataGridView.xaml.cs">
+      <DependentUpon>DynDataGridView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\Components\FocusAttacher.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridColumnVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridCellValueVM.cs" />
@@ -98,6 +119,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="_src\Components\DynDataGrid\Views\DynDataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

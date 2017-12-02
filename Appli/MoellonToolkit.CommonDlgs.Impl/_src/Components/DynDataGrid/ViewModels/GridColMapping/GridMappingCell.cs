@@ -6,20 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevApp.ViewModels
+namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
     /// All the cells (values or components) of the grid, link between col and row.
     /// </summary>
     public class GridMappingCell : GridMappingCellsBase
     {
+        /// <summary>
+        /// $TASK-001
+        /// </summary>
+        IDynDataGridFactory _gridFactory;
+
         IDynDataGrid _datagrid;
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public GridMappingCell(IDynDataGrid datagrid)
+        public GridMappingCell(IDynDataGridFactory gridFactory, IDynDataGrid datagrid)
         {
+            _gridFactory = gridFactory;
             _datagrid = datagrid;
         }
         public override IGridCellVM FindOrCreate(object columnBinding, object rowBinding)
@@ -63,10 +69,9 @@ namespace DevApp.ViewModels
             // find the cell in the row, by the columnDef
             IGridCell cell = rowBinding.GridRow.FindCellByColumn(columnBinding.GridColumn);
 
-            // the value does not exists
-            // TODO: revoir ca, peut etre une Value ou un Component
-            //ici();
-            IGridCellVM mapValue = new GridCellValueVM(cell);
+            // $TASK-001: the value does not exists, create the cellVM, can be a value or a component (button, combobox,...)
+            IGridCellVM mapValue =_gridFactory.CreateCellVM(cell);
+
             mapValue.ColumnBinding = columnBinding;
             mapValue.RowBinding = rowBinding;
 

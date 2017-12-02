@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MoellonToolkit.CommonDlgs.Impl.Components;
 
 namespace DevApp.ViewModels
 {
@@ -1006,7 +1007,9 @@ namespace DevApp.ViewModels
                 _listStringCode.Add(stringCodeVM);
             }
 
-            DynDataGridVM = new DynDataGridVM(AppCtrlProvider.AppCtrl.DataGrid);
+            // create the grid factory to build typed cell and cellVM /$TASK-001
+            IDynDataGridFactory gridFactory = new DynDataGridFactory();
+            DynDataGridVM = new DynDataGridVM(AppCtrlProvider.AppCtrl.CommonDlg, gridFactory, AppCtrlProvider.AppCtrl.DataGrid);
         }
 
         /// <summary>

@@ -69,10 +69,12 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                 if (args.Action == NotifyCollectionChangedAction.Remove)
                     RemoveColumns(dataGrid, args.OldItems);
                 else if (args.Action == NotifyCollectionChangedAction.Add)
+                    // adding a new col
                     AddColumns(dataGrid, args.NewItems);
             };
 
-            dataGrid.Loaded += (sender, args) => AddColumns(dataGrid, GetAttachedColumns(dataGrid));
+            // load/refresh
+            dataGrid.Loaded += (sender, args) => RefreshColumns(dataGrid, GetAttachedColumns(dataGrid));
             var items = dataGrid.ItemsSource as INotifyCollectionChanged;
             if (items != null)
                 items.CollectionChanged += (sender, args) =>
@@ -82,19 +84,27 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                 };
             
         }
+        /// <summary>
+        /// Refresh all columns of the dataGird.
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <param name="columns"></param>
+        private static void RefreshColumns(DataGrid dataGrid, IEnumerable columns)
+        {
+            // pb! si refresh complet, besoin sur ajout col!
+            dataGrid.Columns.Clear();
+
+            AddColumns(dataGrid, columns);
+        }
 
         /// <summary>
-        /// Add a new column to the dataGird.
+        /// Add columns to the dataGird.
+        /// (first time)
         /// </summary>
         /// <param name="dataGrid"></param>
         /// <param name="columns"></param>
         private static void AddColumns(DataGrid dataGrid, IEnumerable columns)
         {
-            dataGrid.Columns.Clear();
-
-            //TODO: typer! en IColumnGridVM
-            // Créer ColumnDefGridVMBase ou ColumnGridBaseVM
-
             IGridColumnVM columnGridVM;
 
             foreach (var column in columns)

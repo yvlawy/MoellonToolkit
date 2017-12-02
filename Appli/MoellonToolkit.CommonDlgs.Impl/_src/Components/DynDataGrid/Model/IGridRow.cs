@@ -21,5 +21,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         IGridCell FindCellByColumn(IGridColumn dataGridColumn);
 
         bool AddCell(IGridCell cell);
+        bool RemoveCell(IGridCell cell);
+
     }
 }

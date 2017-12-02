@@ -23,5 +23,10 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         // remove the row from the datagrid
         bool RemoveRow(IGridRow row);
+
+        void RemoveAllRow();
+
+        bool RemoveColumn(IGridColumn column);
+
     }
 }

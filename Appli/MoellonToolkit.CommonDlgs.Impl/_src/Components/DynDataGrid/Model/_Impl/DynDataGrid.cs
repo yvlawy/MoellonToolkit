@@ -66,5 +66,19 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             return true;
         }
 
+        public void RemoveAllRow()
+        {
+            _listRow.Clear();
+        }
+
+        public bool RemoveColumn(IGridColumn column)
+        {
+            if (column == null)
+                return false;
+
+            _listColumn.Remove(column);
+            return true;
+        }
+
     }
 }

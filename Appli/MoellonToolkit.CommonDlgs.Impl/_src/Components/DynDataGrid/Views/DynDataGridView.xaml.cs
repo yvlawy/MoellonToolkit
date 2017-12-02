@@ -1,16 +1,15 @@
-﻿using DevApp.ViewModels;
-using MoellonToolkit.CommonDlgs.Impl;
+﻿using MoellonToolkit.CommonDlgs.Impl;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace DevApp.Views
+namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class DynDataGrid : UserControl
+    public partial class DynDataGridView : UserControl
     {
-        public DynDataGrid()
+        public DynDataGridView()
         {
             InitializeComponent();
         }

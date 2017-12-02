@@ -59,5 +59,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             return true;
         }
 
+        public bool RemoveCell(IGridCell cell)
+        {
+            if (cell == null)
+                return false;
+
+            _listCell.Remove(cell);
+            return true;
+        }
+
     }
 }

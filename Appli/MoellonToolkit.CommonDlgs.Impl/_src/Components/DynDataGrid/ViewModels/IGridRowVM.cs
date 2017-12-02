@@ -15,5 +15,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         IGridRow GridRow { get; }
 
+        // list of cellVM
     }
 }

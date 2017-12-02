@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevApp.ViewModels
+namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
     /// row grid VM.

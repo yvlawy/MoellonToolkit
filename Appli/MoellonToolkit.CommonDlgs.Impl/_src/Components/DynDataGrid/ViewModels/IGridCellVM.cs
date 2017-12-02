@@ -18,7 +18,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// the cell data: a value or a component.
         /// </summary>
         //object Value { get; set; }
-        object Cell { get; set; }
+        //object Cell { get; set; }
 
         bool IsReadOnly { get; }
         void Refresh();

@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
-    /// the cell value of a cell: map between a col and a row of a dataGrid.
-    /// TODO: hériter de IGridCellVM.
+    /// The value of a cell: its a value (not a component).
+    /// Map between a col and a row of a dataGrid.
     /// </summary>
     public interface IGridCellValueVM : IGridCellVM
     {
+        /// <summary>
+        /// the cell data: a value or a component.
+        /// </summary>
+        //object Value { get; set; }
+        object Cell { get; set; }
+
         //object ColumnBinding { get; set; }
 
         //object RowBinding { get; set; }

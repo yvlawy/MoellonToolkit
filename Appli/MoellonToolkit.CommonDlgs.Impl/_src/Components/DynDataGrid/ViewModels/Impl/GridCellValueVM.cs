@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevApp.ViewModels
+namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
     /// A data grid cell value to edit.
@@ -18,7 +18,7 @@ namespace DevApp.ViewModels
         /// <summary>
         /// The concerned data model cell displayed in the UI cell data grid.
         /// </summary>
-        private IGridCell _gridCell;
+        private IGridCellValue _gridCell;
 
         /// <summary>
         /// TODO: the basic type value? int, string,...
@@ -30,8 +30,8 @@ namespace DevApp.ViewModels
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="dispDataCell"></param>
-        public GridCellValueVM(IGridCell gridCell)
+        /// <param name="gridCell"></param>
+        public GridCellValueVM(IGridCellValue gridCell)
         {
             _gridCell = gridCell;
             IsReadOnly = _gridCell.IsReadOnly;

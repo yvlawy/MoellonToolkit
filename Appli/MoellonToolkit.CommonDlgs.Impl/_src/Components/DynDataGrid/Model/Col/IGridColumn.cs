@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
-    /// A generic of the datagrid.
+    /// Baseof all columns of the datagrid.
     /// </summary>
     public interface IGridColumn
     {

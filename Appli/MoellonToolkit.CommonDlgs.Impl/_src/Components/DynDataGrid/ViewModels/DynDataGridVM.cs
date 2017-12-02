@@ -1,5 +1,4 @@
-﻿using DevApp.Ctrl;
-using MoellonToolkit.CommonDlgs.Defs;
+﻿using MoellonToolkit.CommonDlgs.Defs;
 using MoellonToolkit.CommonDlgs.Impl;
 using MoellonToolkit.CommonDlgs.Impl.Components;
 using MoellonToolkit.MVVMBase;
@@ -11,10 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DevApp.ViewModels
+namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
+    /// <summary>
+    /// The dynamic dataGrid, with command to add row and col.
+    /// </summary>
     public class DynDataGridVM : ViewModelBase
     {
+        /// <summary>
+        /// To ask to the user row and col name.
+        /// </summary>
+        ICommonDlg _commonDlg;
+
+        /// <summary>
+        /// To build cell and cellVM, depending on type (of col or cell).
+        /// </summary>
+        IDynDataGridFactory _gridFactory;
+
         /// <summary>
         /// datagrid model.
         /// data to display.
@@ -36,7 +48,10 @@ namespace DevApp.ViewModels
         /// </summary>
         GridMappingCell _collCell;
 
-        IGridRowVM _selectedItem;
+        /// <summary>
+        /// Selected row in the grid.
+        /// </summary>
+        IGridRowVM _selectedRow;
 
         ICommand _addRowCmd;
         ICommand _delRowCmd;
@@ -51,9 +66,12 @@ namespace DevApp.ViewModels
         /// Constructor.
         /// </summary>
         /// <param name="datagrid"></param>
-        public DynDataGridVM(IDynDataGrid datagrid)
+        public DynDataGridVM(ICommonDlg commonDlg, IDynDataGridFactory gridFactory, IDynDataGrid datagrid)
         {
-            _collCell = new GridMappingCell(datagrid);
+            _commonDlg = commonDlg;
+            _gridFactory = gridFactory;
+
+            _collCell = new GridMappingCell(gridFactory, datagrid);
 
             _datagrid = datagrid;
             Init();
@@ -113,12 +131,12 @@ namespace DevApp.ViewModels
         /// <summary>
         /// datagrid row item selection
         /// </summary>
-        public IGridRowVM SelectedItem
+        public IGridRowVM SelectedRow
         {
-            get { return _selectedItem; }
+            get { return _selectedRow; }
             set
             {
-                _selectedItem = value;
+                _selectedRow = value;
             }
         }
 
@@ -197,6 +215,9 @@ namespace DevApp.ViewModels
         //---------------------------------------------------------------------
         private bool CanAddRow()
         {
+            // need at least a col to add rows
+            if (_collColumnGrid.Count == 0)
+                return false;
             return true;
         }
 
@@ -209,17 +230,9 @@ namespace DevApp.ViewModels
             // get columns
             foreach( IGridColumn col in  _datagrid.ListColumn)
             {
-                // create a cell matching the type of the column
-                IGridColumnString colString = col as IGridColumnString;
-                if(colString!=null)
-                {
-                    IGridCell cell = new GridCellString(colString, "");
-                    row.AddCell(cell);
-                    continue;
-                }
-
-                // other type
-                // TODO:
+                // $TASK-001: create the cell, matching the type defined in the column
+                IGridCell cell = _gridFactory.CreateCell(col);
+                row.AddCell(cell);
             }
 
             _datagrid.AddRow(row);
@@ -233,7 +246,7 @@ namespace DevApp.ViewModels
         //---------------------------------------------------------------------
         private bool CanDelRow()
         {
-            if (_selectedItem == null)
+            if (_selectedRow == null)
                 return false;
             return true;
         }
@@ -247,13 +260,14 @@ namespace DevApp.ViewModels
             //_collDataRow.GetEnumerator().
 
             // remove the VM
-            GridRowVM rowVM = _selectedItem as GridRowVM;
-            _collDataRow.Remove(_selectedItem);
-            _selectedItem = null;
-            RaisePropertyChanged("CollDataRow");
+            GridRowVM rowVM = _selectedRow as GridRowVM;
+            _collDataRow.Remove(_selectedRow);
+            _selectedRow = null;
 
             // remove the row from the datagrid
             rowVM.GridRow.Datagrid.RemoveRow(rowVM.GridRow);
+
+            RaisePropertyChanged("CollDataRow");
         }
 
         //---------------------------------------------------------------------
@@ -262,6 +276,10 @@ namespace DevApp.ViewModels
             return true;
         }
 
+        /// <summary>
+        /// Add a new column at the end of the existing col, create all missing cell on each row.
+        /// No need to create cellVM, will be created automatically by the gridMappingcell.
+        /// </summary>
         private void AddCol()
         {
             // ask to the user the name and the type
@@ -276,13 +294,23 @@ namespace DevApp.ViewModels
 
             //DlgComboChoiceItem selected;
 
-            string text;
-            CommonDlgResult res = AppCtrlProvider.AppCtrl.CommonDlg.ShowDlgInputText("Input", "Column name:", "col", out text);
+            string newColName;
+            CommonDlgResult res = _commonDlg.ShowDlgInputText("Input", "Column name:", "col", out newColName);
             if (res != CommonDlgResult.Ok)
                 return;
 
+            // check the column name
+            if (string.IsNullOrEmpty(newColName))
+                return;
+            newColName = newColName.Trim();
+            if (_datagrid.ListColumn.Where(c => c.Name.Equals(newColName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault() != null)
+            {
+                _commonDlg.ShowError("The name is already used by a column.");
+                return;
+            }
+
             // create a column, depending on the type
-            IGridColumnString column = new GridColumnString(text);
+            IGridColumnString column = new GridColumnString(newColName);
             //column.IsEditionReadOnly = true;
             _datagrid.AddColumn(column);
 
@@ -290,17 +318,11 @@ namespace DevApp.ViewModels
             foreach(IGridRow gridRow in _datagrid.ListRow)
             {
                 // depending on the type of the new column
-                IGridColumnString colString = column as IGridColumnString;
+                IGridCell cell = _gridFactory.CreateCell(column);
 
-                if(colString!= null)
-                {
-                    // TODO: ??
-                    //IGridCell cell= new 
-                }
-                //IGridCell 
+                gridRow.AddCell(cell);
             }
-            //ici();  // and the VM?
-
+ 
             // update the UI, add the colVM
             AddColumnVM(column);
         }
@@ -309,13 +331,53 @@ namespace DevApp.ViewModels
         private bool CanDelCol()
         {
             // get the column of the selected cell (having the focus)
-            if (_selectedItem == null)
+            if (_selectedRow == null)
                 return false;
             return true;
         }
 
+        /// <summary>
+        /// Delete the column, containing the focused cell.
+        /// $TASK-002
+        /// </summary>
         private void DelCol()
         {
+            // select the col to delete
+            IGridColumn columnToRemove = _datagrid.ListColumn.Last();
+            if (columnToRemove == null)
+                return;
+
+            // get the VM
+            IGridColumnVM colVM = _collColumnGrid.Where(c => c.GridColumn == columnToRemove).FirstOrDefault();
+
+            // remove the VM
+            _collColumnGrid.Remove(colVM);
+
+            // remove the coll
+            _datagrid.RemoveColumn(columnToRemove);
+
+            // no more col: remove all rows
+            if(_datagrid.ListColumn.Count()==0)
+            {
+                // remove all rows
+                _datagrid.RemoveAllRow();
+
+                // remove all rows VM
+                _collDataRow.Clear();
+                RaisePropertyChanged("CollDataRow");
+                return;
+            }
+
+            // remove the cells! in each row
+            foreach(IGridRow gridRow in _datagrid.ListRow)
+            {
+                // find the cellVM matching the col
+                IGridCell cell = gridRow.FindCellByColumn(columnToRemove);
+                gridRow.RemoveCell(cell);
+            }
+
+            RaisePropertyChanged("CollDataRow");
+
         }
         #endregion
 
@@ -330,7 +392,7 @@ namespace DevApp.ViewModels
             {
                 AddColumnVM(column);
             }
-            RaisePropertyChanged("CollColumnGrid");
+            //RaisePropertyChanged("CollColumnGrid");
 
             //----build the rows of the dataGrid
             foreach(IGridRow gridRow in _datagrid.ListRow)
@@ -342,16 +404,31 @@ namespace DevApp.ViewModels
 
         }
 
+        /// <summary>
+        /// Add a new columnVM.
+        /// Depends on the type.
+        /// TODO: passer par la grid factory??
+        /// </summary>
+        /// <param name="column"></param>
         private void AddColumnVM(IGridColumn column)
         {
-            IGridColumnVM columnGridVM;
+            IGridColumnVM columnVM;
 
             // is it a string column?
             IGridColumnString columnString = column as IGridColumnString;
             if (columnString != null)
             {
-                columnGridVM = new GridColumnStringVM(columnString);
-                _collColumnGrid.Add(columnGridVM);
+                columnVM = new GridColumnStringVM(columnString);
+                _collColumnGrid.Add(columnVM);
+                return;
+            }
+
+            // is it a checkbox column?
+            IGridColumnCheckBox columnCheckBox = column as IGridColumnCheckBox;
+            if(columnCheckBox != null)
+            {
+                columnVM = new GridColumnCheckBoxVM(columnCheckBox);
+                _collColumnGrid.Add(columnVM);
                 return;
             }
 
