@@ -15,6 +15,9 @@ where are built the current package.
 ================================================================================
 Process:
 
+Don't forget to set new version to the three libraries!
+Build them.
+
 Create a target folder:
 Built\MoellonToolkit.x.x.x.x\
 
