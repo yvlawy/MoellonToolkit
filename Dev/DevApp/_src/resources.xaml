@@ -10,8 +10,9 @@
         <v:EditDynDataGridView />
     </DataTemplate>
 
-    <!-- in the lib -->
-    <DataTemplate DataType="{x:Type tc:DynDataGridVM}">
+    <!-- declare this for the dynamic dataGrid component 
+         here or in the component View using the component -->
+    <!--<DataTemplate DataType="{x:Type tc:DynDataGridVM}">
         <tc:DynDataGridView />
-    </DataTemplate>
+    </DataTemplate>-->
 </ResourceDictionary>

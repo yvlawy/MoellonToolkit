@@ -8,7 +8,6 @@
         MinHeight="100" MinWidth="100">
 
     <UserControl.Resources>
-
         <DataTemplate x:Key="headerTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Name}" />
