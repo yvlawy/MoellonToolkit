@@ -99,9 +99,9 @@
                 </StackPanel>
             </TabItem>
 
-            <TabItem Header="DynDataTable">
-                <!-- insere dynDataGrid -->
-                <ContentPresenter Content="{Binding DynDataGridVM}"></ContentPresenter>
+            <TabItem Header="EditDynDataGrid">
+                <!-- insert the editDynDataGrid  having buttons -->
+                <ContentPresenter Content="{Binding EditDynDataGridVM}"></ContentPresenter>
             </TabItem>
             
             <tc:CloseableTabItem Header="TabItem 3" />

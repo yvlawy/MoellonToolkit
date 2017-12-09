@@ -18,7 +18,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         private IGridCellCheckBox _gridCell;
 
         /// <summary>
-        /// TODO: ??
+        /// The cell content.
         /// </summary>
         private object _isChecked;
 

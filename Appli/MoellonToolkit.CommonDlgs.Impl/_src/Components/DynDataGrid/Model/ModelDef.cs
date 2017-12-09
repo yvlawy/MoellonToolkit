@@ -5,11 +5,12 @@ using System.Text;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
-    /// <summary>
-    /// Grid Column value: string, int,..
-    /// not component.
-    /// </summary>
-    public interface IGridColumnValue : IGridColumn
+    public class ModelDef
     {
+        public enum GridColumnType
+        {
+            String,
+            CheckBox
+        }
     }
 }

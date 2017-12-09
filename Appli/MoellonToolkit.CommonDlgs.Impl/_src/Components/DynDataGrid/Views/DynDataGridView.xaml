@@ -8,21 +8,19 @@
         MinHeight="100" MinWidth="100">
 
     <UserControl.Resources>
+
         <DataTemplate x:Key="headerTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Name}" />
             </StackPanel>
         </DataTemplate>
 
+        <!-- display a cell value or component -->
         <DataTemplate x:Key="cellTemplate">
             <!--<DataTemplate.Resources>
                 <tc:RowAndColumnMultiValueConverter x:Key="Converter"/>
             </DataTemplate.Resources>-->
-            <!-- display a cell value or a row relation button -->
             <ContentPresenter Content="{Binding}" />
-            <!--<StackPanel>
-                    <TextBlock Text="{Binding Value}" />
-            </StackPanel>-->
         </DataTemplate>
 
         <!-- edition of a cell value -->
@@ -39,8 +37,7 @@
             <TextBlock Text="{Binding Cell}" IsEnabled="False"/>
         <!-- <TextBox Text="{Binding Value}" IsReadOnly="{Binding IsReadOnly}"></TextBox> -->
         </DataTemplate>
-        
-        
+                
         <!-- display a checkbox cell -->
         <DataTemplate DataType="{x:Type local:GridCellCheckBoxVM}">
             <CheckBox IsChecked="{Binding IsChecked}"></CheckBox>
@@ -48,46 +45,33 @@
 
     </UserControl.Resources>
 
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Right">
-            <Button Width="40" Margin="2" Command="{Binding AddColCmd}">C+</Button>
-            <Button Width="40" Margin="2" Command="{Binding DelColCmd}">C-</Button>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Width="40" Margin="2" Command="{Binding AddRowCmd}">R+</Button>
-            <Button Width="40" Margin="2" Command="{Binding DelRowCmd}">R-</Button>
-        </StackPanel>
+    <!-- the dynamic DataGrid -->
+    <DataGrid ItemsSource="{Binding CollDataRow}" x:Name="myGrid" 
+                    local:AttachedColumnBehavior.HeaderTemplate="{StaticResource headerTemplate}"
+                    local:AttachedColumnBehavior.AttachedCellTemplate="{StaticResource cellTemplate}"
+                    local:AttachedColumnBehavior.AttachedColumns="{Binding CollColumnGrid}"
+                    local:AttachedColumnBehavior.AttachedCellEditingTemplate="{StaticResource cellEditingTemplate}"
+                    local:AttachedColumnBehavior.MappedCells="{Binding CollCell}" 
+                    AutoGenerateColumns="False"
+                    SelectedItem="{Binding SelectedRow}" >
 
-        <!-- insere dynDataGrid -->
-        <!--tc:AttachedColumnBehavior.MappedValues="{Binding CollCell}" -->
-        <DataGrid ItemsSource="{Binding CollDataRow}" x:Name="myGrid" 
-                      local:AttachedColumnBehavior.HeaderTemplate="{StaticResource headerTemplate}"
-                      local:AttachedColumnBehavior.AttachedCellTemplate="{StaticResource cellTemplate}"
-                      local:AttachedColumnBehavior.AttachedColumns="{Binding CollColumnGrid}"
-                      local:AttachedColumnBehavior.AttachedCellEditingTemplate="{StaticResource cellEditingTemplate}"
-                      local:AttachedColumnBehavior.MappedCells="{Binding CollCell}" 
-                      AutoGenerateColumns="False"
-                      SelectedItem="{Binding SelectedRow}" >
+        <!--
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="IsTabStop" Value="True" />
+                        <Setter Property="Focusable" Value="True" />
+                    </Style>
+                </DataGrid.CellStyle>
+                -->
 
-            <!--
-                    <DataGrid.CellStyle>
-                        <Style TargetType="{x:Type DataGridCell}">
-                            <Setter Property="IsTabStop" Value="True" />
-                            <Setter Property="Focusable" Value="True" />
-                        </Style>
-                    </DataGrid.CellStyle>
-                    -->
-
-            <!--
-            <DataGrid.RowDetailsTemplate>-->
-                <!-- the board: one or more dataGrid rows details -->
-            <!--
-                <DataTemplate> 
-                    <ItemsControl ItemsSource="{Binding CollDataListGridRowDetailVM }" /> -->
-                    <!--<ListBox ItemsSource="{Binding ListDetailText}" Width="80" Margin="0,5,0,10"/>-->
-                <!--</DataTemplate>-->
-            <!--</DataGrid.RowDetailsTemplate>-->
-        </DataGrid>
-    </DockPanel>
-
+        <!--
+        <DataGrid.RowDetailsTemplate>-->
+            <!-- the board: one or more dataGrid rows details -->
+        <!--
+            <DataTemplate> 
+                <ItemsControl ItemsSource="{Binding CollDataListGridRowDetailVM }" /> -->
+                <!--<ListBox ItemsSource="{Binding ListDetailText}" Width="80" Margin="0,5,0,10"/>-->
+            <!--</DataTemplate>-->
+        <!--</DataGrid.RowDetailsTemplate>-->
+    </DataGrid>
 </UserControl>

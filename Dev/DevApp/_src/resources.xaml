@@ -5,8 +5,13 @@
                     xmlns:vm="clr-namespace:DevApp.ViewModels"
                     xmlns:tc="clr-namespace:MoellonToolkit.CommonDlgs.Impl.Components;assembly=MoellonToolkit.CommonDlgs.Impl">
 
+    <!-- define in the app -->
+    <DataTemplate DataType="{x:Type vm:EditDynDataGridVM}">
+        <v:EditDynDataGridView />
+    </DataTemplate>
+
+    <!-- in the lib -->
     <DataTemplate DataType="{x:Type tc:DynDataGridVM}">
         <tc:DynDataGridView />
     </DataTemplate>
-
 </ResourceDictionary>

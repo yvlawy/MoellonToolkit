@@ -61,6 +61,7 @@
     <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnCheckBox.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnComponent.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnValue.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\ModelDef.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridCellCheckBox.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridColumnCheckBox.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\DynDataGridVM.cs" />

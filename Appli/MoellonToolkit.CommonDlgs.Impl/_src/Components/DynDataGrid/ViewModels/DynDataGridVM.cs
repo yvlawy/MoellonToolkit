@@ -1,37 +1,28 @@
-﻿using MoellonToolkit.CommonDlgs.Defs;
-using MoellonToolkit.CommonDlgs.Impl;
-using MoellonToolkit.CommonDlgs.Impl.Components;
-using MoellonToolkit.MVVMBase;
+﻿using MoellonToolkit.MVVMBase;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     /// <summary>
-    /// The dynamic dataGrid, with command to add row and col.
+    /// The dynamic dataGrid.
+    /// no UI interation.
     /// </summary>
     public class DynDataGridVM : ViewModelBase
     {
-        /// <summary>
-        /// To ask to the user row and col name.
-        /// </summary>
-        ICommonDlg _commonDlg;
-
         /// <summary>
         /// To build cell and cellVM, depending on type (of col or cell).
         /// </summary>
         IDynDataGridFactory _gridFactory;
 
         /// <summary>
-        /// datagrid model.
-        /// data to display.
+        /// The datagrid model.
+        /// Contains the data to display.
         /// </summary>
-        IDynDataGrid _datagrid;
+        IDynDataGrid _dynDataGrid;
 
         /// <summary>
         /// Displayed Columns definition.
@@ -53,31 +44,28 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         IGridRowVM _selectedRow;
 
-        ICommand _addRowCmd;
-        ICommand _delRowCmd;
-
-        /// <summary>
-        /// Add a new data column.
-        /// </summary>
-        ICommand _addColCmd;
-        ICommand _delColCmd;
-
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="datagrid"></param>
-        public DynDataGridVM(ICommonDlg commonDlg, IDynDataGridFactory gridFactory, IDynDataGrid datagrid)
+        /// <param name="dynDatagrid"></param>
+        public DynDataGridVM(IDynDataGridFactory gridFactory, IDynDataGrid dynDatagrid)
         {
-            _commonDlg = commonDlg;
             _gridFactory = gridFactory;
 
-            _collCell = new GridMappingCell(gridFactory, datagrid);
+            _collCell = new GridMappingCell(gridFactory, dynDatagrid);
 
-            _datagrid = datagrid;
+            _dynDataGrid = dynDatagrid;
             Init();
         }
 
         #region Properties.
+
+        /// <summary>
+        /// The datagrid model.
+        /// Contains the data to display.
+        /// </summary>
+        public IDynDataGrid DynDataGrid
+        { get { return _dynDataGrid; } }
 
         /// <summary>
         /// Displayed Columns definition.
@@ -142,120 +130,40 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         #endregion
 
-        #region Command properties
+        #region Public methods: add/del row and col
 
         /// <summary>
-        /// Add a new empty row.
+        /// Create a row with (empty) cells, at the end.
         /// </summary>
-        public ICommand AddRowCmd
+        /// <returns></returns>
+        public IGridRow CreateRowWithCells()
         {
-            get
-            {
-                if (_addRowCmd == null)
-                {
-                    _addRowCmd = new RelayCommand(param => AddRow(),
-                                                             param => CanAddRow());
-                }
-                return _addRowCmd;
-            }
-        }
-
-        /// <summary>
-        /// delete the selected row.
-        /// </summary>
-        public ICommand DelRowCmd
-        {
-            get
-            {
-                if (_delRowCmd == null)
-                {
-                    _delRowCmd = new RelayCommand(param => DelRow(),
-                                                             param => CanDelRow());
-                }
-                return _delRowCmd;
-            }
-        }
-
-        /// <summary>
-        /// Add a new empty col.
-        /// </summary>
-        public ICommand AddColCmd
-        {
-            get
-            {
-                if (_addColCmd == null)
-                {
-                    _addColCmd = new RelayCommand(param => AddCol(),
-                                                             param => CanAddCol());
-                }
-                return _addColCmd;
-            }
-        }
-
-        /// <summary>
-        /// delete the selected column.
-        /// </summary>
-        public ICommand DelColCmd
-        {
-            get
-            {
-                if (_delColCmd == null)
-                {
-                    _delColCmd = new RelayCommand(param => DelCol(),
-                                                             param => CanDelCol());
-                }
-                return _delColCmd;
-            }
-        }
-
-        #endregion
-
-        #region Private Command properties
-
-        //---------------------------------------------------------------------
-        private bool CanAddRow()
-        {
-            // need at least a col to add rows
-            if (_collColumnGrid.Count == 0)
-                return false;
-            return true;
-        }
-
-        private void AddRow()
-        {
-
-            // create data rows
-            IGridRow row = new GridRow(_datagrid);
+            IGridRow row = new GridRow(_dynDataGrid);
 
             // get columns
-            foreach( IGridColumn col in  _datagrid.ListColumn)
+            foreach (IGridColumn col in _dynDataGrid.ListColumn)
             {
-                // $TASK-001: create the cell, matching the type defined in the column
+                // create the cell, matching the type defined in the column
                 IGridCell cell = _gridFactory.CreateCell(col);
                 row.AddCell(cell);
             }
 
-            _datagrid.AddRow(row);
+            _dynDataGrid.AddRow(row);
 
             // add it to the view: create VM
             IGridRowVM rowVM = new GridRowVM(row);
             _collDataRow.Add(rowVM);
             RaisePropertyChanged("CollDataRow");
+
+            return row;
         }
 
-        //---------------------------------------------------------------------
-        private bool CanDelRow()
+        /// <summary>
+        /// Delete the row, update the UI.
+        /// </summary>
+        /// <param name="row"></param>
+        public void DelRow(IGridRowVM row)
         {
-            if (_selectedRow == null)
-                return false;
-            return true;
-        }
-
-        private void DelRow()
-        {
-            // ask user to confirm the deletion
-            // TODO:
-
             // get the next item in the datagrid, if exists
             //_collDataRow.GetEnumerator().
 
@@ -265,88 +173,34 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             _selectedRow = null;
 
             // remove the row from the datagrid
-            rowVM.GridRow.Datagrid.RemoveRow(rowVM.GridRow);
+            _dynDataGrid.RemoveRow(rowVM.GridRow);
 
             RaisePropertyChanged("CollDataRow");
         }
 
-        //---------------------------------------------------------------------
-        private bool CanAddCol()
+        // create a column, depending on the type
+        public IGridColumnVM CreateColumnWithCells(ModelDef.GridColumnType typeCol, string newColName)
         {
-            return true;
-        }
-
-        /// <summary>
-        /// Add a new column at the end of the existing col, create all missing cell on each row.
-        /// No need to create cellVM, will be created automatically by the gridMappingcell.
-        /// </summary>
-        private void AddCol()
-        {
-            // ask to the user the name and the type
-            //List<DlgComboChoiceItem> listItem = new List<DlgComboChoiceItem>();
-            //DlgComboChoiceItem selectedBeforeItem = null;
-
-            //var item = new DlgComboChoiceItem("string", "string");
-            //listItem.Add(item);
-            //selectedBeforeItem = item;
-            //item = new DlgComboChoiceItem("int", "int");
-            //listItem.Add(item);
-
-            //DlgComboChoiceItem selected;
-
-            string newColName;
-            CommonDlgResult res = _commonDlg.ShowDlgInputText("Input", "Column name:", "col", out newColName);
-            if (res != CommonDlgResult.Ok)
-                return;
-
-            // check the column name
-            if (string.IsNullOrEmpty(newColName))
-                return;
-            newColName = newColName.Trim();
-            if (_datagrid.ListColumn.Where(c => c.Name.Equals(newColName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault() != null)
-            {
-                _commonDlg.ShowError("The name is already used by a column.");
-                return;
-            }
-
-            // create a column, depending on the type
             IGridColumnString column = new GridColumnString(newColName);
+
             //column.IsEditionReadOnly = true;
-            _datagrid.AddColumn(column);
+            _dynDataGrid.AddColumn(column);
 
             // create a empty cell for each row
-            foreach(IGridRow gridRow in _datagrid.ListRow)
+            foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 // depending on the type of the new column
                 IGridCell cell = _gridFactory.CreateCell(column);
 
                 gridRow.AddCell(cell);
             }
- 
+
             // update the UI, add the colVM
-            AddColumnVM(column);
+            return AddColumnVM(column);
         }
 
-        //---------------------------------------------------------------------
-        private bool CanDelCol()
+        public bool DelColumn(IGridColumn columnToRemove)
         {
-            // get the column of the selected cell (having the focus)
-            if (_selectedRow == null)
-                return false;
-            return true;
-        }
-
-        /// <summary>
-        /// Delete the column, containing the focused cell.
-        /// $TASK-002
-        /// </summary>
-        private void DelCol()
-        {
-            // select the col to delete
-            IGridColumn columnToRemove = _datagrid.ListColumn.Last();
-            if (columnToRemove == null)
-                return;
-
             // get the VM
             IGridColumnVM colVM = _collColumnGrid.Where(c => c.GridColumn == columnToRemove).FirstOrDefault();
 
@@ -354,22 +208,22 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             _collColumnGrid.Remove(colVM);
 
             // remove the coll
-            _datagrid.RemoveColumn(columnToRemove);
+            _dynDataGrid.RemoveColumn(columnToRemove);
 
             // no more col: remove all rows
-            if(_datagrid.ListColumn.Count()==0)
+            if (_dynDataGrid.ListColumn.Count() == 0)
             {
                 // remove all rows
-                _datagrid.RemoveAllRow();
+                _dynDataGrid.RemoveAllRow();
 
                 // remove all rows VM
                 _collDataRow.Clear();
                 RaisePropertyChanged("CollDataRow");
-                return;
+                return true;
             }
 
             // remove the cells! in each row
-            foreach(IGridRow gridRow in _datagrid.ListRow)
+            foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 // find the cellVM matching the col
                 IGridCell cell = gridRow.FindCellByColumn(columnToRemove);
@@ -377,8 +231,9 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             }
 
             RaisePropertyChanged("CollDataRow");
-
+            return true;
         }
+
         #endregion
 
         #region Privates methods.
@@ -388,20 +243,19 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             _collColumnGrid.Clear();
 
             // add list of column definition
-            foreach (IGridColumn column in _datagrid.ListColumn)
+            foreach (IGridColumn column in _dynDataGrid.ListColumn)
             {
                 AddColumnVM(column);
             }
             //RaisePropertyChanged("CollColumnGrid");
 
             //----build the rows of the dataGrid
-            foreach(IGridRow gridRow in _datagrid.ListRow)
+            foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 IGridRowVM rowVM = new GridRowVM(gridRow);
                 _collDataRow.Add(rowVM);
             }
             RaisePropertyChanged("CollDataRow");
-
         }
 
         /// <summary>
@@ -410,7 +264,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// TODO: passer par la grid factory??
         /// </summary>
         /// <param name="column"></param>
-        private void AddColumnVM(IGridColumn column)
+        private IGridColumnVM AddColumnVM(IGridColumn column)
         {
             IGridColumnVM columnVM;
 
@@ -420,21 +274,24 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             {
                 columnVM = new GridColumnStringVM(columnString);
                 _collColumnGrid.Add(columnVM);
-                return;
+                return columnVM;
             }
 
             // is it a checkbox column?
             IGridColumnCheckBox columnCheckBox = column as IGridColumnCheckBox;
-            if(columnCheckBox != null)
+            if (columnCheckBox != null)
             {
                 columnVM = new GridColumnCheckBoxVM(columnCheckBox);
                 _collColumnGrid.Add(columnVM);
-                return;
+                return columnVM;
             }
 
             // other type
             // TODO:
+            throw new Exception("Column type not implemented!");
+
         }
-    #endregion
-}
+        #endregion
+
     }
+}

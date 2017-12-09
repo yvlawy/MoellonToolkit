@@ -136,6 +136,15 @@ namespace DevApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// The Edit dynamic dataGrid (having Add/Del row and col).
+        /// </summary>
+        public EditDynDataGridVM EditDynDataGridVM
+        { get; set; }
+
+        /// <summary>
+        /// The dynamic dataGrid: its the base component: only a grid without any button.
+        /// </summary>
         public DynDataGridVM DynDataGridVM
         { get; set; }
 
@@ -1009,7 +1018,9 @@ namespace DevApp.ViewModels
 
             // create the grid factory to build typed cell and cellVM /$TASK-001
             IDynDataGridFactory gridFactory = new DynDataGridFactory();
-            DynDataGridVM = new DynDataGridVM(AppCtrlProvider.AppCtrl.CommonDlg, gridFactory, AppCtrlProvider.AppCtrl.DataGrid);
+            EditDynDataGridVM = new EditDynDataGridVM(AppCtrlProvider.AppCtrl.CommonDlg, gridFactory, AppCtrlProvider.AppCtrl.DataGrid);
+
+            DynDataGridVM= new DynDataGridVM(gridFactory, AppCtrlProvider.AppCtrl.DataGrid);
         }
 
         /// <summary>

@@ -59,6 +59,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             return true;
         }
 
+
         // remove the row from the datagrid
         public bool RemoveRow(IGridRow row)
         {
