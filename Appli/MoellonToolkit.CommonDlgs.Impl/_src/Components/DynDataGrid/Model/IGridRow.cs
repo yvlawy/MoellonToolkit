@@ -14,6 +14,16 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         IDynDataGrid Datagrid { get; }
 
         /// <summary>
+        /// To put external object, optionnal.
+        /// </summary>
+        object Object { get; set; }
+
+        /// <summary>
+        /// List of cells of the row.
+        /// </summary>
+        IEnumerable<IGridCell> ListCell { get; }
+
+        /// <summary>
         /// find the cell in the row, by the column.
         /// </summary>
         /// <param name="dataGridColumn"></param>

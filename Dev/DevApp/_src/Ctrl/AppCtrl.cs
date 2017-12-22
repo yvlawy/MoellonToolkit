@@ -67,9 +67,20 @@ namespace DevApp.Ctrl
         public IAppDlg AppDlg { get { return _appDlg; } }
 
         /// <summary>
+        /// The factory to build items for dynamic dataGrid.
+        /// One factory for all dataGrid.
+        /// </summary>
+        public IDynDataGridFactory DynDataGridFactory { get; private set; }
+
+        /// <summary>
         /// A datagrid to test the dynamic data grid UI.
         /// </summary>
         public IDynDataGrid DataGrid { get; private set; }
+
+        /// <summary>
+        /// Action, callback, called when a dataGrid cell is modified.
+        /// </summary>
+        //public Action<IGridCell> ActionGridValueModifiedInUI { get; set; }
 
         #endregion
 
@@ -283,36 +294,37 @@ namespace DevApp.Ctrl
 
         private void InitData()
         {
-            DataGrid = new MoellonToolkit.CommonDlgs.Impl.Components.DynDataGrid();
-            
+            DynDataGridFactory= new DynDataGridFactory();
+            DataGrid = new DynDataGrid();
+
+
             //----create columns
-            IGridColumnString columnKey = new GridColumnString("Key");
+            IGridColumn columnKey;
+            DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Key", out columnKey);
             columnKey.IsEditionReadOnly = true;
-            DataGrid.AddColumn(columnKey);
-            IGridColumnString columnValue = new GridColumnString("Value");
-            DataGrid.AddColumn(columnValue);
+
+            IGridColumn columnValue;
+            DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Value", out columnValue);
 
             // $TASK-003: col checkbox
-            IGridColumnCheckBox columnCheck = new GridColumnCheckBox("check");
-            DataGrid.AddColumn(columnCheck);
+            IGridColumn columnCheck;
+            DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.CheckBox, "Checked", out columnCheck);
 
-            // create data rows
-            IGridRow row = new GridRow(DataGrid);
+            //----create a data row
+            IGridRow row = DynDataGridFactory.CreateRowWithCells(DataGrid);
 
             //----create data cells
-            IGridCell cell = new GridCellString(columnKey, "keyYes");
-            row.AddCell(cell);
-            cell = new GridCellString(columnValue, "Oui");
-            row.AddCell(cell);
+            DataGrid.SetCellValue(row, columnKey, "keyYes");
+            DataGrid.SetCellValue(row, "Value", "Oui");
             // checked by default
-            cell = new GridCellCheckBox(columnCheck, true);
-            row.AddCell(cell);
+            DataGrid.SetCellValue(row, "Checked", true);
 
+            // test: search a column by the name
+            //DataGrid.ListRow.Where(r=>r.)
 
             // TODO:
-            DataGrid.AddRow(row);
+            //DataGrid.AddRow(row);
         }
-
 
         #endregion
 

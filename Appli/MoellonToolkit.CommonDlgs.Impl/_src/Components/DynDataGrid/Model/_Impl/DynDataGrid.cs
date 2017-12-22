@@ -11,15 +11,25 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// </summary>
     public class DynDataGrid : IDynDataGrid
     {
+        /// <summary>
+        /// Action, callback, called when a fdataGrid cell is modified.
+        /// </summary>
+        Action<IGridCell> _actionGridValueModifiedInUI;
+
         List<IGridColumn> _listColumn;
 
         List<IGridRow> _listRow;
 
         public DynDataGrid()
         {
+            GridCellValueModifiedProvider = new ActionGridCellValueModifiedProvider();
+            //GridValueModified = gridValueModified;
             _listColumn = new List<IGridColumn>();
             _listRow = new List<IGridRow>();
         }
+
+        public ActionGridCellValueModifiedProvider GridCellValueModifiedProvider { get;private set;}
+        //public Action<IGridCell> GridValueModified { get; private set; }
 
         public IEnumerable<IGridColumn> ListColumn
         { get { return _listColumn; } }
@@ -79,6 +89,76 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
             _listColumn.Remove(column);
             return true;
+        }
+
+
+        /// <summary>
+        /// Set a string value to a cell in a row.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="colName"></param>
+        /// <param name="cellValue"></param>
+        /// <returns></returns>
+        public bool SetCellValue(IGridRow row, string colName, string cellValue)
+        {
+            // find the column
+            IGridColumn colum = _listColumn.Where(c => c.Name.Equals(colName)).FirstOrDefault();
+            if (colum == null)
+                return false;
+
+            return SetCellValue(row, colum, cellValue);
+        }
+
+        public bool SetCellValue(IGridRow row, IGridColumn column, string cellValue)
+        {
+            if (row == null || column == null || cellValue == null)
+                return false;
+
+            // find the cell in the row, matching the column
+            IGridCell cell = row.ListCell.Where(ce => ce.Column == column).FirstOrDefault();
+            if (cell == null)
+                return false;
+
+            // the cell must be string
+            GridCellString cellValueString = cell as GridCellString;
+            if (cellValueString == null)
+                return false;
+
+            cellValueString.Cell = cellValue;
+            return true;
+        }
+
+        public bool SetCellValue(IGridRow row, string colName, bool cellValue)
+        {
+            // find the column
+            IGridColumn colum = _listColumn.Where(c => c.Name.Equals(colName)).FirstOrDefault();
+            if (colum == null)
+                return false;
+
+            return SetCellValue(row, colum, cellValue);
+        }
+
+        public bool SetCellValue(IGridRow row, IGridColumn column, bool cellValue)
+        {
+            if (row == null || column == null)
+                return false;
+
+            // find the cell in the row, matching the column
+            IGridCell cell = row.ListCell.Where(ce => ce.Column == column).FirstOrDefault();
+            if (cell == null)
+                return false;
+
+            // the cell must be a bool: can be checkbox, a radioButton
+            GridCellCheckBox cellValueBool = cell as GridCellCheckBox;
+            if (cellValueBool != null)
+            {
+                cellValueBool.Cell = cellValue;
+                return true;
+            }
+
+            // TODO: others types: radioButton
+            return false;
+        
         }
 
     }

@@ -10,6 +10,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// <summary>
     /// The dynamic dataGrid.
     /// no UI interation.
+    /// Manage the data model.
     /// </summary>
     public class DynDataGridVM : ViewModelBase
     {
@@ -59,6 +60,12 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
 
         #region Properties.
+
+        /// <summary>
+        /// To build cell and cellVM, depending on type (of col or cell).
+        /// </summary>
+        public IDynDataGridFactory Factory
+        { get { return _gridFactory; } }
 
         /// <summary>
         /// The datagrid model.
@@ -134,6 +141,8 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         /// <summary>
         /// Create a row with (empty) cells, at the end.
+        /// create row and cells models and ViewModel.
+        /// Use this method for a basic usage: you use the component dataGrid as your application dataGrid model.
         /// </summary>
         /// <returns></returns>
         public IGridRow CreateRowWithCells()
@@ -144,10 +153,11 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             foreach (IGridColumn col in _dynDataGrid.ListColumn)
             {
                 // create the cell, matching the type defined in the column
-                IGridCell cell = _gridFactory.CreateCell(col);
+                IGridCell cell = _gridFactory.CreateCell(_dynDataGrid, col);
                 row.AddCell(cell);
             }
 
+            // add the row to the dataGrid
             _dynDataGrid.AddRow(row);
 
             // add it to the view: create VM
@@ -159,13 +169,44 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
 
         /// <summary>
-        /// Delete the row, update the UI.
+        /// Add a row data model to the grid UI, create a corresponding VM.
+        /// The grid row must have cells.
+        /// Use this method when you map your application dataGrid model to this component dataGrid model.
+        /// </summary>
+        /// <param name="gridRow"></param>
+        /// <returns></returns>
+        public IGridRowVM AddRow(IGridRow gridRow)
+        {
+            if (gridRow == null)
+                return null;
+
+            // check the cells (basic check: just the number of cells)
+            if (gridRow.ListCell.Count() != _collColumnGrid.Count)
+                return null;
+
+            // the row should be present inthe dataGrid model
+            if (!_dynDataGrid.ListRow.Contains(gridRow))
+                return null;
+
+            // add it to the view: create VM
+            IGridRowVM rowVM = new GridRowVM(gridRow);
+            _collDataRow.Add(rowVM);
+            RaisePropertyChanged("CollDataRow");
+
+            return rowVM;
+        }
+
+        /// <summary>
+        /// Delete the row data model, delete also the corresponding VM.
+        /// Update the UI.
         /// </summary>
         /// <param name="row"></param>
         public void DelRow(IGridRowVM row)
         {
             // get the next item in the datagrid, if exists
-            //_collDataRow.GetEnumerator().
+            //IEnumerator<IGridRowVM> enumRow = _collDataRow.GetEnumerator();
+
+            //enumRow.Current
 
             // remove the VM
             GridRowVM rowVM = _selectedRow as GridRowVM;
@@ -178,27 +219,64 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             RaisePropertyChanged("CollDataRow");
         }
 
-        // create a column, depending on the type
-        public IGridColumnVM CreateColumnWithCells(ModelDef.GridColumnType typeCol, string newColName)
+        /// <summary>
+        /// create a column in the dataGird model and also in the corresponding VM, depending on the type.
+        /// (the UI wil be updated automatically).
+        /// </summary>
+        /// <param name="typeCol"></param>
+        /// <param name="newColName"></param>
+        /// <param name="colObj"></param>
+        /// <param name="gridColumnVM"></param>
+        /// <returns></returns>
+        public DynDataGridErrCode CreateColumnWithCells(GridColumnType typeCol, string newColName, out IGridColumnVM gridColumnVM)
         {
-            IGridColumnString column = new GridColumnString(newColName);
+            return CreateColumnWithCells(typeCol, newColName, null, out gridColumnVM);
+        }
+
+        /// <summary>
+        /// create a column in the dataGird model and also in the corresponding VM, depending on the type.
+        /// (the UI wil be updated automatically).
+        /// Create all empty cells (model and view model).
+        /// </summary>
+        /// <param name="typeCol"></param>
+        /// <param name="newColName"></param>
+        /// <param name="colObj"></param>
+        /// <param name="gridColumnVM"></param>
+        /// <returns></returns>
+        public DynDataGridErrCode CreateColumnWithCells(GridColumnType typeCol, string newColName, object colObj, out IGridColumnVM gridColumnVM)
+        {
+            gridColumnVM = null;
+
+            // create the col in the data model, depending on the type
+            IGridColumn column;
+            DynDataGridErrCode errCode = _gridFactory.CreateColumn(_dynDataGrid, typeCol, newColName, colObj, out column);
+            if (errCode != DynDataGridErrCode.Ok)
+                return errCode;
 
             //column.IsEditionReadOnly = true;
-            _dynDataGrid.AddColumn(column);
 
-            // create a empty cell for each row
+            // add the column in the dataGrid model
+            //_dynDataGrid.AddColumn(column);
+
+            // create a empty cell for each row in the dataGrid model
             foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 // depending on the type of the new column
-                IGridCell cell = _gridFactory.CreateCell(column);
+                IGridCell cell = _gridFactory.CreateCell(_dynDataGrid, column);
 
                 gridRow.AddCell(cell);
             }
 
             // update the UI, add the colVM
-            return AddColumnVM(column);
+            gridColumnVM= AddColumnVM(column);
+            return DynDataGridErrCode.Ok;
         }
 
+        /// <summary>
+        /// Delte a column: in the dataGrid model and then in the VM.
+        /// </summary>
+        /// <param name="columnToRemove"></param>
+        /// <returns></returns>
         public bool DelColumn(IGridColumn columnToRemove)
         {
             // get the VM
@@ -237,6 +315,10 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         #endregion
 
         #region Privates methods.
+
+        /// <summary>
+        /// Initialization, create the all VM: cols and rows (and cells), corresponding to the dataGrid model.
+        /// </summary>
         private void Init()
         {
             //----build the columns of the dataGrid
@@ -250,6 +332,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             //RaisePropertyChanged("CollColumnGrid");
 
             //----build the rows of the dataGrid
+            // TODO: mettre dans une méthode
             foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 IGridRowVM rowVM = new GridRowVM(gridRow);
@@ -259,7 +342,25 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
 
         /// <summary>
-        /// Add a new columnVM.
+        /// Check the name of the column.
+        /// </summary>
+        /// <param name="newColName"></param>
+        /// <param name="errCode"></param>
+        /// <returns></returns>
+        //private DynDataGridErrCode CheckColumnName(string newColName)
+        //{
+        //    newColName = newColName.Trim();
+        //    if (string.IsNullOrWhiteSpace(newColName))
+        //        return DynDataGridErrCode.ColumnNameWrong;
+
+        //    if (_collColumnGrid.Where(c=>c.GridColumn.Name.Equals(newColName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault()!=null)
+        //        return DynDataGridErrCode.ColumnNameAlreadyUsed;
+
+        //    return DynDataGridErrCode.Ok;
+        //}
+
+        /// <summary>
+        /// Create Add a new columnVM based on the column model.
         /// Depends on the type.
         /// TODO: passer par la grid factory??
         /// </summary>

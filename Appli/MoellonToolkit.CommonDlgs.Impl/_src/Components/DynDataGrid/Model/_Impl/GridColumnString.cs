@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
-    public class GridColumnString : IGridColumnString
+    public class GridColumnString : GridColumnBase, IGridColumnString
     {
-        public GridColumnString(string name)
+        public GridColumnString(string name, object colObj): base(name, colObj)
         {
-            IsEditionReadOnly = false;
-            Name = name;
         }
-
-        public string Name { get; private set; }
-
-        public bool IsEditionReadOnly { get; set; }
 
     }
 }

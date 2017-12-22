@@ -27,7 +27,7 @@
             <!-- <DataTemplate.Resources>
                 <vm:RowAndColumnMultiValueConverter x:Key="Converter" />
             </DataTemplate.Resources>-->
-            <TextBox Text="{Binding Cell, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" local:FocusAttacher.Focus="True"
+            <TextBox Text="{Binding Cell, ValidatesOnDataErrors=True,UpdateSourceTrigger=Default}" local:FocusAttacher.Focus="True"
                      Foreground="Blue" IsReadOnly="{Binding IsReadOnly}"/>
         </DataTemplate>
 

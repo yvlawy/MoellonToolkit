@@ -14,10 +14,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     public class GridMappingCell : GridMappingCellsBase
     {
         /// <summary>
-        /// $TASK-001
+        /// The factory to build cell ViewModel depending on the type.
+        /// 
         /// </summary>
         IDynDataGridFactory _gridFactory;
 
+        /// <summary>
+        /// The dynamic data grid model.
+        /// </summary>
         IDynDataGrid _datagrid;
 
         /// <summary>
@@ -72,6 +76,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             // $TASK-001: the value does not exists, create the cellVM, can be a value or a component (button, combobox,...)
             IGridCellVM mapValue =_gridFactory.CreateCellVM(cell);
 
+            // if problem here: cell or row data model is missing in the VM
             mapValue.ColumnBinding = columnBinding;
             mapValue.RowBinding = rowBinding;
 

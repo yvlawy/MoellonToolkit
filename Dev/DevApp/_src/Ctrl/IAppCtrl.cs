@@ -1,6 +1,7 @@
 ﻿using DevApp.Enums;
 using MoellonToolkit.CommonDlgs.Impl.Components;
 using MoellonToolkit.MVVMBase;
+using System;
 
 namespace DevApp.Ctrl
 {
@@ -13,6 +14,17 @@ namespace DevApp.Ctrl
         ViewModelBase ShowView(ViewDef view);
 
         bool StartApp();
+
+        /// <summary>
+        /// Action, callback, called when a dataGrid cell is modified.
+        /// </summary>
+        //Action<IGridCell> ActionGridValueModifiedInUI { get; set; }
+
+        /// <summary>
+        /// The factory to build items for dynamic dataGrid.
+        /// One factory for all dataGrid.
+        /// </summary>
+        IDynDataGridFactory DynDataGridFactory { get; }
 
         /// <summary>
         /// A datagrid to test the dynamic data grid UI.

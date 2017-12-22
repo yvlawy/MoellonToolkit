@@ -5,17 +5,12 @@ using System.Text;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
-    public class GridColumnCheckBox : IGridColumnCheckBox
+    public class GridColumnCheckBox : GridColumnBase, IGridColumnCheckBox
     {
-        public GridColumnCheckBox(string name)
+        public GridColumnCheckBox(string name, object obj):base(name, obj)
         {
-            IsEditionReadOnly = false;
-            Name = name;
         }
 
-        public string Name { get; private set; }
-
-        public bool IsEditionReadOnly { get; set; }
 
     }
 }

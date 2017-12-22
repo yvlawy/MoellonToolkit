@@ -11,9 +11,17 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// </summary>
     public abstract class GridCellBase: IGridCell
     {
-        public GridCellBase(IGridColumn column)
+        ActionGridCellValueModifiedProvider _actionProvider;
+
+        Action<IGridCell> _actionValueModifiedInUI;
+
+        public GridCellBase(IGridColumn column, ActionGridCellValueModifiedProvider actionProvider)
         {
             Column = column;
+
+            //_actionValueModifiedInUI = valueModifiedInUI;
+            _actionProvider = actionProvider;
+
             IsReadOnly = column.IsEditionReadOnly;
         }
 
@@ -28,5 +36,12 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         public object Cell
         { get; set; }
+
+        public void RaiseValueModifiedInUI()
+        {
+            _actionProvider.ActionGridValueModifiedInUI?.Invoke(this);
+            //_actionValueModifiedInUI?.Invoke(this);
+        }
+
     }
 }

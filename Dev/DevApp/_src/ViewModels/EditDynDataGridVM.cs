@@ -1,4 +1,5 @@
-﻿using MoellonToolkit.CommonDlgs.Defs;
+﻿using DevApp.Ctrl;
+using MoellonToolkit.CommonDlgs.Defs;
 using MoellonToolkit.CommonDlgs.Impl.Components;
 using MoellonToolkit.MVVMBase;
 using System;
@@ -36,6 +37,9 @@ namespace DevApp.ViewModels
         /// <param name="datagrid"></param>
         public EditDynDataGridVM(ICommonDlg commonDlg, IDynDataGridFactory gridFactory, IDynDataGrid datagrid)
         {
+            AppCtrlProvider.AppCtrl.DataGrid.GridCellValueModifiedProvider.ActionGridValueModifiedInUI = ActionGridValueModifiedInUI;
+
+            //AppCtrlProvider.AppCtrl.ActionGridValueModifiedInUI = ActionGridValueModifiedInUI;
             _commonDlg = commonDlg;
             //_gridFactory = gridFactory;
 
@@ -138,8 +142,26 @@ namespace DevApp.ViewModels
 
         private void AddRow()
         {
+            //---test solution A
             // create a row with empty cells, at the end.
-            IGridRow row = DynDataGridVM.CreateRowWithCells();
+            //IGridRow row = DynDataGridVM.CreateRowWithCells();
+
+            //---test solution B
+            IGridRow gridRow = new GridRow(DynDataGridVM.DynDataGrid);
+            // add the row to the dataGrid
+            DynDataGridVM.DynDataGrid.AddRow(gridRow);
+
+            // create cells corresponding to the columns
+            foreach (IGridColumn col in DynDataGridVM.DynDataGrid.ListColumn)
+            {
+                // create the cell, matching the type defined in the column
+                IGridCell cell = DynDataGridVM.Factory.CreateCell(DynDataGridVM.DynDataGrid, col);
+                gridRow.AddCell(cell);
+            }
+
+            // add the dataGrid row to the VM
+            DynDataGridVM.AddRow(gridRow);
+
         }
 
         //---------------------------------------------------------------------
@@ -201,8 +223,9 @@ namespace DevApp.ViewModels
                 return;
             }
 
-            // create a column, depending on the type
-            DynDataGridVM.CreateColumnWithCells(ModelDef.GridColumnType.String, newColName);
+            // create a column, type string
+            IGridColumnVM gridColumnVM;
+            DynDataGridVM.CreateColumnWithCells(GridColumnType.String, newColName, out gridColumnVM);
         }
 
         //---------------------------------------------------------------------
@@ -234,6 +257,17 @@ namespace DevApp.ViewModels
         private void Init()
         {
         }
+
+        /// <summary>
+        /// Action, a grid cell content is modified.
+        /// </summary>
+        /// <param name="cell"></param>
+        private void ActionGridValueModifiedInUI(IGridCell cell)
+        {
+            // coming here when a cell value is modified in the UI
+            // TODO
+        }
+
         #endregion
     }
 }

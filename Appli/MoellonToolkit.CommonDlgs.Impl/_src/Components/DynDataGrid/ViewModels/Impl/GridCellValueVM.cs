@@ -25,7 +25,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// 
         /// or the IValue (displayed with the TosString())?
         /// </summary>
-        private object _cell;
+        //private object _cell;
 
         /// <summary>
         /// Constructor.
@@ -43,12 +43,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         /// <summary>
         /// get/set the value of the cell.
+        /// TextBox UpdateSourceTrigger=Default in xaml. 
         /// </summary>
         public object Cell
         {
             get
             {
-                return _cell;
+                //return _cell;
+                return _gridCell.Cell;
             }
             // update the cell value, from the UI
             set
@@ -74,24 +76,8 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         private void InitCell()
         {
-            _cell = _gridCell.Cell;
-            //if (_dataGridCell.Value == null)
-            //{
-            //    _value = "X";
-            //    RaisePropertyChanged("Value");
-            //    return;
-            //}
+            //_cell = _gridCell.Cell;
 
-            // get the type 
-            //IType type = AppCtrlLocator.AppCtrl.Core.TypeFinder.GetTypeOfValue(_dispDataCell.DataCell.Value);
-
-            //// get the type to check the new value
-            //IValue val;
-            //if (!AppCtrlLocator.AppCtrl.MainObjectEditor.CheckTypeConvertValue(type, (string)value, out val))
-            //{
-            //    // wrong type, the user cancel the set
-            //    return;
-            //}
 
             // save the value
             //_value = _dataGridCell.DataCell.Value.ToString();
@@ -107,34 +93,18 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <param name="value"></param>
         private void SetCell(object value)
         {
-            if (_cell == value)
+            if (_gridCell.Cell == value)
                 // the new value is the same than the old one
                 return;
 
             if (_gridCell.Column.IsEditionReadOnly)
                 return;
 
-            // check the type
-            _cell = value;
+            // set the new value to the cell
+            _gridCell.Cell= value;
 
-
-            //// get the type 
-            //IType type = AppCtrlLocator.AppCtrl.Core.TypeFinder.GetTypeOfValue(_dataGridCell.DataCell.Value);
-
-            //// get the type to check the new value
-            //IValue val;
-            //if (!AppCtrlLocator.AppCtrl.MainObjectEditor.CheckTypeConvertValue(type, (string)value, out val))
-            //{
-            //    // wrong type, the user cancel the set
-            //    return;
-            //}
-
-            //// save the value
-            //_value = val;
-            //_dataGridCell.SetValue(val);
-
-            //// dispatch the modification
-            //AppCtrlLocator.AppCtrl.ActivityDispatcher.DispatchModification(OperationType.Update, OperationObject.DataCell, new OperationParams { DispDataCell = _dataGridCell });
+            // raise action: value modified in the UI
+            _gridCell.RaiseValueModifiedInUI();
 
             RaisePropertyChanged("Cell");
         }

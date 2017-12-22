@@ -8,12 +8,12 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     public class GridCellCheckBox : GridCellBase, IGridCellCheckBox
     {
         /// <summary>
-        /// Constrcutor.
+        /// Constructor.
         /// Provide the default (its a bool ).
         /// </summary>
         /// <param name="column"></param>
         /// <param name="value"></param>
-        public GridCellCheckBox(IGridColumnCheckBox  column, bool value):base(column)
+        public GridCellCheckBox(IGridColumnCheckBox  column, bool value, ActionGridCellValueModifiedProvider actionProvider) :base(column, actionProvider)
         {
             // TODO: c'est ca? 
             Cell = value;

@@ -18,6 +18,13 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         public GridRow(IDynDataGrid datagrid)
         {
             Datagrid = datagrid;
+            Object = null;
+        }
+
+        public GridRow(IDynDataGrid datagrid, object obj)
+        {
+            Datagrid = datagrid;
+            Object = obj;
         }
 
         /// <summary>
@@ -26,7 +33,15 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         public IDynDataGrid Datagrid
         { get; private set; }
 
-        // list of cells
+        /// <summary>
+        /// To put external object, optionnal.
+        /// </summary>
+        public object Object { get; set; }
+
+
+        /// <summary>
+        /// list of cells.
+        /// </summary>
         public IEnumerable<IGridCell> ListCell
         { get { return _listCell; } }
 

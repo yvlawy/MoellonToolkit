@@ -5,12 +5,10 @@ using System.Text;
 
 namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
-    public class ModelDef
+    public enum DynDataGridErrCode
     {
-    }
-    public enum GridColumnType
-    {
-        String,
-        CheckBox
+        Ok,
+        ColumnNameWrong,
+        ColumnNameAlreadyUsed,
     }
 }

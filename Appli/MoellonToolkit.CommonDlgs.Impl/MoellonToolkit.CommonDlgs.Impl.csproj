@@ -54,6 +54,8 @@
     </Compile>
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabControl.cs" />
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabItem.cs" />
+    <Compile Include="_src\Components\DynDataGrid\ActionGridCellValueModifiedProvider.cs" />
+    <Compile Include="_src\Components\DynDataGrid\DynDataGridErrCode.cs" />
     <Compile Include="_src\Components\DynDataGrid\Factories\DynDataGridFactory.cs" />
     <Compile Include="_src\Components\DynDataGrid\Factories\DynDataGridFactoryBase.cs" />
     <Compile Include="_src\Components\DynDataGrid\Factories\IDynDataGridFactory.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="_src\Components\DynDataGrid\Model\Col\IGridColumnValue.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\ModelDef.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridCellCheckBox.cs" />
+    <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridColumnBase.cs" />
     <Compile Include="_src\Components\DynDataGrid\Model\_Impl\GridColumnCheckBox.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\DynDataGridVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\AttachedColumnBehavior.cs" />

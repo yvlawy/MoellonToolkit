@@ -17,5 +17,11 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         string Name { get; }
 
         bool IsEditionReadOnly { get; set; }
+
+        /// <summary>
+        /// To put external object, optionnal.
+        /// </summary>
+        object Object { get; set; }
+
     }
 }

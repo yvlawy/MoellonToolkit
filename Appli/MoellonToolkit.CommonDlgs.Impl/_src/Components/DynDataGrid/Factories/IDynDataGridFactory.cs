@@ -11,15 +11,49 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     public interface IDynDataGridFactory
     {
         /// <summary>
+        /// create the col in the data model, depending on the type.
+        /// Provide an object to attach to the column.
+        /// </summary>
+        /// <param name="typeCol"></param>
+        /// <param name="newColName"></param>
+        /// <returns></returns>
+        DynDataGridErrCode CreateColumn(IDynDataGrid dataGrid, GridColumnType typeCol, string newColName, out IGridColumn column);
+
+        /// <summary>
+        /// create the col in the data model, depending on the type.
+        /// </summary>
+        /// <param name="typeCol"></param>
+        /// <param name="newColName"></param>
+        /// <returns></returns>
+        DynDataGridErrCode CreateColumn(IDynDataGrid dataGrid, GridColumnType typeCol, string newColName, object colObj, out IGridColumn column);
+
+        IGridRow CreateRowWithCells(IDynDataGrid dataGrid);
+
+        /// <summary>
+        /// Create a row in the data grid, create all cells of the row, attach an object to the row.
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        IGridRow CreateRowWithCells(IDynDataGrid dataGrid, object objRowAttached);
+
+        /// <summary>
         /// Create a cell (for a row), depending on the column type.
-        /// TODO: comme ca ou directement da le row? (a fournir alors)
         /// </summary>
         /// <param name="column"></param>
         /// <returns></returns>
-        IGridCell CreateCell(IGridColumn column);
+        IGridCell CreateCell(IDynDataGrid dataGrid, IGridColumn column);
 
         // # créer une cellVM selon une cell
         IGridCellVM CreateCellVM(IGridCell cell);
+
+        /// <summary>
+        /// Check the name of the column, should be: not null, not empty, not already used by another column.
+        /// </summary>
+        /// <param name="newColName"></param>
+        /// <param name="errCode"></param>
+        /// <returns></returns>
+        DynDataGridErrCode CheckColumnName(IDynDataGrid dataGrid, string newColName);
 
     }
 }
