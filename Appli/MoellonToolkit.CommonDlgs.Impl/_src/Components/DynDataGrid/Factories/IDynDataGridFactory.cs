@@ -27,6 +27,11 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <returns></returns>
         DynDataGridErrCode CreateColumn(IDynDataGrid dataGrid, GridColumnType typeCol, string newColName, object colObj, out IGridColumn column);
 
+        /// <summary>
+        /// Create a new row in the dataGrid, with empty cells, one for each column.
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <returns></returns>
         IGridRow CreateRowWithCells(IDynDataGrid dataGrid);
 
         /// <summary>
@@ -44,7 +49,11 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <returns></returns>
         IGridCell CreateCell(IDynDataGrid dataGrid, IGridColumn column);
 
-        // # créer une cellVM selon une cell
+        /// <summary>
+        /// Create a cell View model for the datagrid cell.
+        /// </summary>
+        /// <param name="cell"></param>
+        /// <returns></returns>
         IGridCellVM CreateCellVM(IGridCell cell);
 
         /// <summary>

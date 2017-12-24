@@ -197,26 +197,26 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
 
         /// <summary>
-        /// Delete the row data model, delete also the corresponding VM.
+        /// Delete the row data model, delete also the corresponding View model.
         /// Update the UI.
         /// </summary>
         /// <param name="row"></param>
         public void DelRow(IGridRowVM row)
         {
             // get the next item in the datagrid, if exists
-            //IEnumerator<IGridRowVM> enumRow = _collDataRow.GetEnumerator();
-
-            //enumRow.Current
+            IGridRowVM selectedRowVM = _selectedRow;
 
             // remove the VM
-            GridRowVM rowVM = _selectedRow as GridRowVM;
-            _collDataRow.Remove(_selectedRow);
-            _selectedRow = null;
+            GridRowVM rowVM = selectedRowVM as GridRowVM;
+            _collDataRow.Remove(selectedRowVM);
 
             // remove the row from the datagrid
             _dynDataGrid.RemoveRow(rowVM.GridRow);
-
             RaisePropertyChanged("CollDataRow");
+
+            // get the next one or the last, if exists
+            _selectedRow = GetNextOrLast(selectedRowVM);
+            RaisePropertyChanged("SelectedRow");
         }
 
         /// <summary>
@@ -253,11 +253,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             if (errCode != DynDataGridErrCode.Ok)
                 return errCode;
 
-            //column.IsEditionReadOnly = true;
-
-            // add the column in the dataGrid model
-            //_dynDataGrid.AddColumn(column);
-
             // create a empty cell for each row in the dataGrid model
             foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
@@ -273,7 +268,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
 
         /// <summary>
-        /// Delte a column: in the dataGrid model and then in the VM.
+        /// Delete a column in the dataGrid model and then in the View model.
         /// </summary>
         /// <param name="columnToRemove"></param>
         /// <returns></returns>
@@ -310,6 +305,60 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
             RaisePropertyChanged("CollDataRow");
             return true;
+        }
+
+        /// <summary>
+        /// get the next one or the last, if exists.
+        /// </summary>
+        /// <param name="rowVM"></param>
+        /// <returns></returns>
+        public IGridRowVM GetNextOrLast(IGridRowVM rowVM)
+        {
+            if (rowVM == null)
+                return null;
+
+            // nom more item
+            if (_collDataRow.Count == 0)
+                return null;
+
+            IGridRowVM nextRowVM = GetNextRow(rowVM);
+            if (nextRowVM != null)
+                // the last item exists, return it
+                return nextRowVM;
+
+            // find the last one
+            return _collDataRow.Last();
+        }
+
+        /// <summary>
+        /// Get the next item in the datagrid, if exists.
+        /// </summary>
+        /// <param name="rowVM"></param>
+        /// <returns></returns>
+        public IGridRowVM GetNextRow(IGridRowVM rowVM)
+        {
+            if (rowVM == null)
+                return null;
+
+            IEnumerator<IGridRowVM> enumRow = _collDataRow.GetEnumerator();
+            enumRow.MoveNext();
+
+            // find the current one
+            while (enumRow.Current != null)
+            {
+                if (enumRow.Current == _selectedRow)
+                    break;
+
+                enumRow.MoveNext();
+            }
+
+            // no more next
+            if (enumRow.Current == null)
+                return null;
+
+            // now, next the next, if exist
+            enumRow.MoveNext();
+            return enumRow.Current;
         }
 
         #endregion

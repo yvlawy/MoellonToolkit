@@ -14,7 +14,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         IDynDataGrid Datagrid { get; }
 
         /// <summary>
-        /// To put external object, optionnal.
+        /// To link an object to the row, optionnal.
         /// </summary>
         object Object { get; set; }
 
@@ -30,7 +30,18 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <returns></returns>
         IGridCell FindCellByColumn(IGridColumn dataGridColumn);
 
+        /// <summary>
+        /// Add a new cell in the row, use the factory to do that!
+        /// </summary>
+        /// <param name="cell"></param>
+        /// <returns></returns>
         bool AddCell(IGridCell cell);
+
+
+        /// <summary>
+        /// remove a cell from the row, use the factory to do that!
+        /// </summary>
+        /// <param name="cell"></param>
         bool RemoveCell(IGridCell cell);
 
     }

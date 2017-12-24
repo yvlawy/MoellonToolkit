@@ -32,6 +32,13 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             _gridFactory = gridFactory;
             _datagrid = datagrid;
         }
+
+        /// <summary>
+        /// Find or create the cell view model corresponding to the row and the column.
+        /// </summary>
+        /// <param name="columnBinding"></param>
+        /// <param name="rowBinding"></param>
+        /// <returns></returns>
         public override IGridCellVM FindOrCreate(object columnBinding, object rowBinding)
         {
             // try to find it
@@ -70,13 +77,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <returns></returns>
         private IGridCellVM Create(IGridColumnVM columnBinding, IGridRowVM rowBinding)
         {
-            // find the cell in the row, by the columnDef
+            // find the cell in the row, by the column
             IGridCell cell = rowBinding.GridRow.FindCellByColumn(columnBinding.GridColumn);
+            if (cell == null)
+                throw new Exception("The cell is not found in the dataGrid!");
 
-            // $TASK-001: the value does not exists, create the cellVM, can be a value or a component (button, combobox,...)
+            // create the cellVM, can be a value or a component (button, combobox,...)
             IGridCellVM mapValue =_gridFactory.CreateCellVM(cell);
 
-            // if problem here: cell or row data model is missing in the VM
             mapValue.ColumnBinding = columnBinding;
             mapValue.RowBinding = rowBinding;
 

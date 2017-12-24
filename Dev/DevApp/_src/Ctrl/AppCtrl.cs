@@ -77,11 +77,6 @@ namespace DevApp.Ctrl
         /// </summary>
         public IDynDataGrid DataGrid { get; private set; }
 
-        /// <summary>
-        /// Action, callback, called when a dataGrid cell is modified.
-        /// </summary>
-        //public Action<IGridCell> ActionGridValueModifiedInUI { get; set; }
-
         #endregion
 
         //=====================================================================
@@ -205,6 +200,7 @@ namespace DevApp.Ctrl
         //---------------------------------------------------------------------
         /// <summary>
         /// Messenger, register actions, (subscribe to events).
+        /// Not used.
         /// </summary>
         void MessengerRegisterActions()
         {
@@ -297,20 +293,20 @@ namespace DevApp.Ctrl
             DynDataGridFactory= new DynDataGridFactory();
             DataGrid = new DynDataGrid();
 
-
             //----create columns
             IGridColumn columnKey;
             DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Key", out columnKey);
+            // this column cells are read-only
             columnKey.IsEditionReadOnly = true;
 
             IGridColumn columnValue;
             DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Value", out columnValue);
 
-            // $TASK-003: col checkbox
+            // col checkbox
             IGridColumn columnCheck;
             DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.CheckBox, "Checked", out columnCheck);
 
-            //----create a data row
+            //----create a data row, with empty cells
             IGridRow row = DynDataGridFactory.CreateRowWithCells(DataGrid);
 
             //----create data cells
@@ -320,10 +316,7 @@ namespace DevApp.Ctrl
             DataGrid.SetCellValue(row, "Checked", true);
 
             // test: search a column by the name
-            //DataGrid.ListRow.Where(r=>r.)
-
-            // TODO:
-            //DataGrid.AddRow(row);
+            DataGrid.ListRow. Where(r=>)
         }
 
         #endregion
