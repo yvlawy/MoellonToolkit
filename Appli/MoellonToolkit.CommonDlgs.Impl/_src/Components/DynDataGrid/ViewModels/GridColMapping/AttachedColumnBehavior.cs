@@ -92,7 +92,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
 
         /// <summary>
-        /// Add columns to the dataGird.
+        /// Add all columns to the dataGird.
         /// (first time)
         /// </summary>
         /// <param name="dataGrid"></param>
@@ -101,6 +101,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         {
             IGridColumnVM columnGridVM;
 
+            // TODO: get the list ordered by the columnGridVM.DisplayIndex data!!
             foreach (var column in columns)
             {
                 columnGridVM = column as IGridColumnVM;
@@ -120,6 +121,8 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                 if (columnGridVM.DisplayIndex != -1)
                     customBoundColumn.DisplayIndex = columnGridVM.DisplayIndex;
 
+                // TOOD: DisplayIndex must be less than Columns.Count !!
+                // (is set on the add, no need to set it!)
                 dataGrid.Columns.Add(customBoundColumn);
             }
         }

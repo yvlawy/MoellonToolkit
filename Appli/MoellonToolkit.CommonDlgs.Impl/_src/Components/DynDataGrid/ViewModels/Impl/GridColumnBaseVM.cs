@@ -19,6 +19,9 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             DisplayIndex = -1;
         }
 
+        /// <summary>
+        /// The data grid model linked in the VM.
+        /// </summary>
         public IGridColumn GridColumn { get; protected set; }
 
         public int DisplayIndex { get; set; }

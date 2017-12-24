@@ -18,11 +18,18 @@ Process:
 Don't forget to set new version to the three libraries!
 Build them.
 
+Update the nuget text file descriptor:
+	MoellonToolkit.nuspec
+
 Create a target folder:
 Built\MoellonToolkit.x.x.x.x\
 
 Copy the model folders.
 
+Copy the MoellonToolkit.nuspec
+  (from the model folder)
+	into the path: on the root (into Built\MoellonToolkit.x.x.x.x\)
+  
 Copy the 3 dll libraries:
 	(from the folder: Dev\DevApp\bin\debug)
 	MoellonToolkit.CommonDlgs.Defs.dll
@@ -33,11 +40,8 @@ Copy the 3 dll libraries:
 		Model\lib\net40\
 
 
-Update the nuget text file descriptor:
-	MoellonToolkit.nuspec
-
 Generate the package:
-(inside Visual Studio, in the nuget console)
+(inside Visual Studio, in the package manager console)
 	todo: copy lib!! (and more)
 	>cd _BuildNuget\Built\MoellonToolkit.x.x.x.x
 	>nuget pack

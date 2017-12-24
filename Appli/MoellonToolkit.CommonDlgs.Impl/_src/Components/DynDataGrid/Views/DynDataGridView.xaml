@@ -53,7 +53,8 @@
                     local:AttachedColumnBehavior.AttachedCellEditingTemplate="{StaticResource cellEditingTemplate}"
                     local:AttachedColumnBehavior.MappedCells="{Binding CollCell}" 
                     AutoGenerateColumns="False"
-                    SelectedItem="{Binding SelectedRow}" >
+                    SelectedItem="{Binding SelectedRow}" 
+                    CanUserReorderColumns="False" ColumnReordered="myGrid_ColumnReordered">
 
         <!--
                 <DataGrid.CellStyle>
