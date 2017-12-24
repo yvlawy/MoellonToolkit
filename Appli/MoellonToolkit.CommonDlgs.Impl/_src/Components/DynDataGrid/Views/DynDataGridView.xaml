@@ -27,13 +27,14 @@
             <!-- <DataTemplate.Resources>
                 <vm:RowAndColumnMultiValueConverter x:Key="Converter" />
             </DataTemplate.Resources>-->
-            <TextBox Text="{Binding Cell, ValidatesOnDataErrors=True,UpdateSourceTrigger=Default}" local:FocusAttacher.Focus="True"
-                     Foreground="Blue" IsReadOnly="{Binding IsReadOnly}"/>
+            <TextBox Text="{Binding Cell, ValidatesOnDataErrors=True,UpdateSourceTrigger=Default}"  
+                Foreground="Blue" IsReadOnly="{Binding IsReadOnly}"
+                local:FocusAttacher.Focus="True" />
         </DataTemplate>
 
         <!-- display a value cell -->
-        <DataTemplate DataType="{x:Type local:GridCellValueVM}"> 
-            <TextBlock Text="{Binding Cell}" IsEnabled="False"/>
+        <DataTemplate DataType="{x:Type local:GridCellValueVM}">
+            <TextBlock Text="{Binding Cell}" IsEnabled="False" />
         <!-- <TextBox Text="{Binding Value}" IsReadOnly="{Binding IsReadOnly}"></TextBox> -->
         </DataTemplate>
                 

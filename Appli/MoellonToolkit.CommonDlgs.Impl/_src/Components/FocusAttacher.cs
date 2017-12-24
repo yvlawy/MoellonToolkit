@@ -25,7 +25,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         public static bool GetFocus(DependencyObject d)
         {
-            return (bool)d.GetValue(FocusProperty);
+                return (bool)d.GetValue(FocusProperty);
         }
 
         public static void SetFocus(DependencyObject d, bool value)
@@ -35,7 +35,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         public static void FocusChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue)
+                if ((bool)e.NewValue)
             {
                 ((UIElement)sender).Focus();
             }

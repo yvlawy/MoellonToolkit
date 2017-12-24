@@ -11,24 +11,60 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// </summary>
     public interface IDynDataGrid
     {
+        /// <summary>
+        /// provider of the action called when a cell is modified.
+        /// </summary>
         ActionGridCellValueModifiedProvider GridCellValueModifiedProvider { get; }
-        //Action<IGridCell> GridValueModified { get; }
 
-        // columns
+        /// <summary>
+        /// List of columns of the dataGrid.
+        /// </summary>
         IEnumerable<IGridColumn> ListColumn { get; }
 
+        /// <summary>
+        /// List of rows of the dataGrid.
+        /// </summary>
         IEnumerable<IGridRow> ListRow { get; }
 
+        /// <summary>
+        /// Find a column by the name.
+        /// </summary>
+        /// <param name="colName"></param>
+        /// <returns></returns>
+        IGridColumn FindColumnByName(string colName);
 
+        /// <summary>
+        /// Add a new column in the dataGrid.
+        /// </summary>
+        /// <param name="column"></param>
+        /// <returns></returns>
         bool AddColumn(IGridColumn column);
 
+        /// <summary>
+        /// Add a new row in the dataGrid.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
         bool AddRow(IGridRow row);
 
-        // remove the row from the datagrid
+        /// <summary>
+        /// remove the row from the datagrid.
+        /// remove cells of the row.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
         bool RemoveRow(IGridRow row);
 
+        /// <summary>
+        /// Remove all row the dataGrid.
+        /// </summary>
         void RemoveAllRow();
 
+        /// <summary>
+        /// Remove a column from the dataGrid.
+        /// </summary>
+        /// <param name="column"></param>
+        /// <returns></returns>
         bool RemoveColumn(IGridColumn column);
 
         /// <summary>

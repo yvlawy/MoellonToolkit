@@ -24,12 +24,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                 typeof(AttachedColumnBehavior),
                 new UIPropertyMetadata(null, OnAttachedColumnsPropertyChanged));
 
-        //public static readonly DependencyProperty MappedValuesProperty =
-        //        DependencyProperty.RegisterAttached("MappedValues",
-        //        typeof(GridMappingCellBase),
-        //        typeof(AttachedColumnBehavior),
-        //        new UIPropertyMetadata(null, OnMappedValuesPropertyChanged));
-
         public static readonly DependencyProperty MappedCellsProperty =
                 DependencyProperty.RegisterAttached("MappedCells",
                 typeof(GridMappingCellsBase),
@@ -119,7 +113,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                     HeaderTemplate = GetHeaderTemplate(dataGrid),
                     CellTemplate = GetAttachedCellTemplate(dataGrid),
                     CellEditingTemplate = GetAttachedCellEditingTemplate(dataGrid),
-                    //MappedValueCollection = GetMappedValues(dataGrid),
                     GridMappingCells = GetMappedCells(dataGrid),
                 };
 
@@ -171,11 +164,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         {
 
         }
-        //private static void OnMappedValuesPropertyChanged
-        //(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-
-        //}
         private static void OnMappedCellsPropertyChanged
         (DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -194,15 +182,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             dataGrid.SetValue(AttachedColumnsProperty, value);
         }
 
-        //public static GridMappingCellBase GetMappedValues(DependencyObject dataGrid)
-        //{
-        //    return (GridMappingCellBase)dataGrid.GetValue(MappedCellsProperty);
-        //}
-
-        //public static void SetMappedValues(DependencyObject dataGrid, GridMappingCellBase value)
-        //{
-        //    dataGrid.SetValue(MappedCellsProperty, value);
-        //}
         public static GridMappingCellsBase GetMappedCells(DependencyObject dataGrid)
         {
             return (GridMappingCellsBase)dataGrid.GetValue(MappedCellsProperty);

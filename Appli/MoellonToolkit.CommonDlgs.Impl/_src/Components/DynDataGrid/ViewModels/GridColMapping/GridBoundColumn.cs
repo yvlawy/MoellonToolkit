@@ -21,6 +21,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         /// <summary>
         /// Find or create a grid cell.
+        /// cell.IsEditing is true on F2 and mouse click.
         /// </summary>
         /// <param name="cell"></param>
         /// <param name="dataItem"></param>
@@ -30,7 +31,19 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             var content = new ContentControl();
             IGridCellVM context = GridMappingCells.FindOrCreate(cell.Column.Header, dataItem);
             var binding = new Binding() { Source = context };
-            content.ContentTemplate = cell.IsEditing ? CellEditingTemplate : CellTemplate;
+
+            // cell edition mode ? on a textBox by F2 or mouse click
+            if (cell.IsEditing)
+            {
+                // only for text box (not for checkbox!)
+                if(context is GridCellValueVM)
+                    content.ContentTemplate = CellEditingTemplate;
+                else
+                    content.ContentTemplate = CellTemplate;
+            }
+            else
+                content.ContentTemplate = CellTemplate;
+
             content.SetBinding(ContentControl.ContentProperty, binding);
             return content;
         }

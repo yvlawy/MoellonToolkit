@@ -14,7 +14,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <summary>
         /// Action, callback, called when a fdataGrid cell is modified.
         /// </summary>
-        Action<IGridCell> _actionGridValueModifiedInUI;
+        //Action<IGridCell> _actionGridValueModifiedInUI;
 
         List<IGridColumn> _listColumn;
 
@@ -23,13 +23,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         public DynDataGrid()
         {
             GridCellValueModifiedProvider = new ActionGridCellValueModifiedProvider();
-            //GridValueModified = gridValueModified;
             _listColumn = new List<IGridColumn>();
             _listRow = new List<IGridRow>();
         }
 
+        /// <summary>
+        /// provider of the action called when a cell is modified.
+        /// </summary>
         public ActionGridCellValueModifiedProvider GridCellValueModifiedProvider { get;private set;}
-        //public Action<IGridCell> GridValueModified { get; private set; }
 
         public IEnumerable<IGridColumn> ListColumn
         { get { return _listColumn; } }
@@ -38,6 +39,15 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         { get { return _listRow; } }
 
 
+        /// <summary>
+        /// Find a column by the name.
+        /// </summary>
+        /// <param name="colName"></param>
+        /// <returns></returns>
+        public IGridColumn FindColumnByName(string colName)
+        {
+            return _listColumn.Where(c => c.Name.Equals(colName)).FirstOrDefault();
+        }
 
         /// <summary>
         /// Add a new column.
@@ -109,6 +119,13 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             return SetCellValue(row, colum, cellValue);
         }
 
+        /// <summary>
+        /// Set a string value to a cell in a row.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="cellValue"></param>
+        /// <returns></returns>
         public bool SetCellValue(IGridRow row, IGridColumn column, string cellValue)
         {
             if (row == null || column == null || cellValue == null)
@@ -128,6 +145,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             return true;
         }
 
+        /// <summary>
+        /// Set a bool value to a cell in a row.
+        /// The cell can be a bool, a checkButton or a radioButton.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="colName"></param>
+        /// <param name="cellValue"></param>
+        /// <returns></returns>
         public bool SetCellValue(IGridRow row, string colName, bool cellValue)
         {
             // find the column
@@ -138,6 +163,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             return SetCellValue(row, colum, cellValue);
         }
 
+        /// <summary>
+        /// Set a bool value to a cell in a row.
+        /// The cell can be a bool, a checkButton or a radioButton.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="cellValue"></param>
+        /// <returns></returns>
         public bool SetCellValue(IGridRow row, IGridColumn column, bool cellValue)
         {
             if (row == null || column == null)

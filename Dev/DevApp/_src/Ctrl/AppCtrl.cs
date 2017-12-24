@@ -10,6 +10,7 @@ using System;
 using System.Timers;
 using System.Windows;
 using System.Windows.Threading;
+using System.Linq;
 
 namespace DevApp.Ctrl
 {
@@ -316,7 +317,7 @@ namespace DevApp.Ctrl
             DataGrid.SetCellValue(row, "Checked", true);
 
             // test: search a column by the name
-            DataGrid.ListRow. Where(r=>)
+            //IGridColumn colFound = DataGrid.FindColumnByName("Key");
         }
 
         #endregion
