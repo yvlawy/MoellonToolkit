@@ -11,16 +11,16 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// </summary>
     public abstract class GridCellBase: IGridCell
     {
-        ActionGridCellValueModifiedProvider _actionProvider;
+        GridCellChangedProvider _gridCellChangedProvider;
 
-        Action<IGridCell> _actionValueModifiedInUI;
+        Action<IGridCell> _gridCellChanged;
 
-        public GridCellBase(IGridColumn column, ActionGridCellValueModifiedProvider actionProvider)
+        public GridCellBase(IGridColumn column, IGridRow row, GridCellChangedProvider actionProvider)
         {
             Column = column;
+            Row = row;
 
-            //_actionValueModifiedInUI = valueModifiedInUI;
-            _actionProvider = actionProvider;
+            _gridCellChangedProvider = actionProvider;
 
             IsReadOnly = column.IsEditionReadOnly;
         }
@@ -31,16 +31,22 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         public IGridColumn Column
         { get; private set; }
 
+        public IGridRow Row
+        { get; private set; }
+
         /// <summary>
         /// The value displayed in the grid cell UI.
         /// </summary>
-        public object Cell
+        public object Content
         { get; set; }
 
-        public void RaiseValueModifiedInUI()
+        /// <summary>
+        /// Called when the cell content has changed.
+        /// Call the attached action, if present.
+        /// </summary>
+        public void RaiseGridCellChanged()
         {
-            _actionProvider.ActionGridValueModifiedInUI?.Invoke(this);
-            //_actionValueModifiedInUI?.Invoke(this);
+            _gridCellChangedProvider.GridCellChanged?.Invoke(this);
         }
 
     }

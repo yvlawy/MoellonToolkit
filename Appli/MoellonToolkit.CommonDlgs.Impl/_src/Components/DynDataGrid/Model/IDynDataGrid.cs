@@ -14,7 +14,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <summary>
         /// provider of the action called when a cell is modified.
         /// </summary>
-        ActionGridCellValueModifiedProvider GridCellValueModifiedProvider { get; }
+        GridCellChangedProvider GridCellChangedProvider { get; }
 
         /// <summary>
         /// List of columns of the dataGrid.

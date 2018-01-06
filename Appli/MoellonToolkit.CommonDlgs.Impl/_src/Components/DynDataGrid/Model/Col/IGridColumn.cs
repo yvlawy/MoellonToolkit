@@ -20,6 +20,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         /// <summary>
         /// To put external object, optionnal.
+        /// (your own column data model for example)
         /// </summary>
         object Object { get; set; }
 

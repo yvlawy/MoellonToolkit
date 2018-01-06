@@ -98,7 +98,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             // create a cell for each column
             foreach (IGridColumn column in dataGrid.ListColumn)
             {
-                IGridCell cell = CreateCell(dataGrid, column);
+                IGridCell cell = CreateCell(dataGrid, column, row);
                 row.AddCell(cell);
             }
 
@@ -111,14 +111,14 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         /// <param name="column"></param>
         /// <returns></returns>
-        public IGridCell CreateCell(IDynDataGrid dataGrid, IGridColumn column)
+        public IGridCell CreateCell(IDynDataGrid dataGrid, IGridColumn column, IGridRow row)
         {
             // create a cell matching the type of the column
             IGridColumnString colString = column as IGridColumnString;
             if (colString != null)
             {
                 // set a default value
-                return new GridCellString(colString, "", dataGrid.GridCellValueModifiedProvider);
+                return new GridCellString(colString, row, "", dataGrid.GridCellChangedProvider);
             }
 
             //IGridColumnInt colInt = column as GridColumnInt;
@@ -131,7 +131,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             IGridColumnCheckBox colCheckBox = column as IGridColumnCheckBox;
             if(colCheckBox!=null)
             {
-                return new GridCellCheckBox(colCheckBox, false, dataGrid.GridCellValueModifiedProvider);
+                return new GridCellCheckBox(colCheckBox, row, false, dataGrid.GridCellChangedProvider);
             }
 
 

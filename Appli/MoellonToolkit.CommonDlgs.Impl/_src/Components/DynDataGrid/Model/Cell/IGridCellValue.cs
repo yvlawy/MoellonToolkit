@@ -11,6 +11,9 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// </summary>
     public interface IGridCellValue : IGridCell
     {
-        void RaiseValueModifiedInUI();
+        /// <summary>
+        /// Raise that the cell content has changed.
+        /// </summary>
+        //void RaiseGridCellChanged();
     }
 }

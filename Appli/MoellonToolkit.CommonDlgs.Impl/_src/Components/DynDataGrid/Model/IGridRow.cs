@@ -15,6 +15,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         /// <summary>
         /// To link an object to the row, optionnal.
+        /// (your own row data model for example or a rowId)
         /// </summary>
         object Object { get; set; }
 

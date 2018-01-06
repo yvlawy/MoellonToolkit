@@ -8,13 +8,20 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 {
     public class GridCellString : GridCellBase, IGridCellValue
     {
-        public GridCellString(IGridColumnString column, string value, ActionGridCellValueModifiedProvider actionProvider) :base(column, actionProvider)
+        public GridCellString(IGridColumnString column, IGridRow row, string value, GridCellChangedProvider actionProvider) :base(column, row, actionProvider)
         {
-            Cell = value;
+            Content = value;
         }
 
 
         //public string Value
         //{ get; set; }
+
+        public override string ToString()
+        {
+            string s = Content as string;
+            if (s == null) s = "(null)";
+            return "string: " + s;
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         public DynDataGrid()
         {
-            GridCellValueModifiedProvider = new ActionGridCellValueModifiedProvider();
+            GridCellChangedProvider = new GridCellChangedProvider();
             _listColumn = new List<IGridColumn>();
             _listRow = new List<IGridRow>();
         }
@@ -30,7 +30,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <summary>
         /// provider of the action called when a cell is modified.
         /// </summary>
-        public ActionGridCellValueModifiedProvider GridCellValueModifiedProvider { get;private set;}
+        public GridCellChangedProvider GridCellChangedProvider { get;private set;}
 
         public IEnumerable<IGridColumn> ListColumn
         { get { return _listColumn; } }
@@ -141,7 +141,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             if (cellValueString == null)
                 return false;
 
-            cellValueString.Cell = cellValue;
+            cellValueString.Content = cellValue;
             return true;
         }
 
@@ -185,7 +185,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             GridCellCheckBox cellValueBool = cell as GridCellCheckBox;
             if (cellValueBool != null)
             {
-                cellValueBool.Cell = cellValue;
+                cellValueBool.Content = cellValue;
                 return true;
             }
 

@@ -26,9 +26,9 @@
         </StackPanel>
 
         <!-- Icon + msg text -->
-        <StackPanel Orientation="Horizontal">
-            <Image Source="{Binding IconImg}" Height="60" Width="60" Margin="8,8,0,0"></Image>
-                <TextBlock Text="{Binding Message}" Margin="8,0,0,0" TextWrapping="Wrap" Width="220" VerticalAlignment="Center"/>
-        </StackPanel>
+        <DockPanel Margin="5,5">
+            <Image DockPanel.Dock="Left" Source="{Binding IconImg}" Height="60" Width="60" Margin="0,0,0,0" VerticalAlignment="Center"></Image>
+            <TextBlock Text="{Binding Message}" Margin="5,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </DockPanel>
     </DockPanel>
 </Window>

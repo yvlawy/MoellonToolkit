@@ -37,7 +37,8 @@ namespace DevApp.ViewModels
         /// <param name="datagrid"></param>
         public EditDynDataGridVM(ICommonDlg commonDlg, IDynDataGridFactory gridFactory, IDynDataGrid datagrid)
         {
-            AppCtrlProvider.AppCtrl.DataGrid.GridCellValueModifiedProvider.ActionGridValueModifiedInUI = ActionGridValueModifiedInUI;
+            // connect a callback to know when agrid cell content is modified
+            AppCtrlProvider.AppCtrl.DataGrid.GridCellChangedProvider.GridCellChanged = GridCellChanged;
 
             //AppCtrlProvider.AppCtrl.ActionGridValueModifiedInUI = ActionGridValueModifiedInUI;
             _commonDlg = commonDlg;
@@ -59,6 +60,8 @@ namespace DevApp.ViewModels
         /// </summary>
         public DynDataGridVM DynDataGridVM { get; private set; }
 
+        public string FootPageText
+        { get; private set; }
         #endregion
 
         #region Command properties
@@ -155,7 +158,7 @@ namespace DevApp.ViewModels
             foreach (IGridColumn col in DynDataGridVM.DynDataGrid.ListColumn)
             {
                 // create the cell, matching the type defined in the column
-                IGridCell cell = DynDataGridVM.Factory.CreateCell(DynDataGridVM.DynDataGrid, col);
+                IGridCell cell = DynDataGridVM.Factory.CreateCell(DynDataGridVM.DynDataGrid, col, gridRow);
                 gridRow.AddCell(cell);
             }
 
@@ -259,13 +262,21 @@ namespace DevApp.ViewModels
         }
 
         /// <summary>
-        /// Action, a grid cell content is modified.
+        /// A grid cell content has changed.
         /// </summary>
         /// <param name="cell"></param>
-        private void ActionGridValueModifiedInUI(IGridCell cell)
+        private void GridCellChanged(IGridCell cell)
         {
-            // coming here when a cell value is modified in the UI
-            // TODO
+            // coming here when a cell value is modified in the UI!
+            // TODO: 
+
+            // get the row and the column where is placed the cell
+            IGridRow row = cell.Row;
+            IGridColumn column = cell.Column;
+
+            // TODO: add your code here!!
+            FootPageText = cell.Content.ToString();
+            RaisePropertyChanged("FootPageText");
         }
 
         #endregion

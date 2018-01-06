@@ -47,7 +47,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         /// <param name="column"></param>
         /// <returns></returns>
-        IGridCell CreateCell(IDynDataGrid dataGrid, IGridColumn column);
+        IGridCell CreateCell(IDynDataGrid dataGrid, IGridColumn column, IGridRow row);
 
         /// <summary>
         /// Create a cell View model for the datagrid cell.

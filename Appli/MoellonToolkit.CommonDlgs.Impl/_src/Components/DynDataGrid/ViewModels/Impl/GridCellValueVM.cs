@@ -21,13 +21,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         private IGridCellValue _gridCell;
 
         /// <summary>
-        /// TODO: the basic type value? int, string,...
-        /// 
-        /// or the IValue (displayed with the TosString())?
-        /// </summary>
-        //private object _cell;
-
-        /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="gridCell"></param>
@@ -35,7 +28,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         {
             _gridCell = gridCell;
             IsReadOnly = _gridCell.IsReadOnly;
-            InitCell();
+            //InitCell();
         }
 
         public object ColumnBinding { get; set; }
@@ -49,8 +42,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         {
             get
             {
-                //return _cell;
-                return _gridCell.Cell;
+                return _gridCell.Content;
             }
             // update the cell value, from the UI
             set
@@ -62,29 +54,12 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         public bool IsReadOnly { get; private set; }
 
         /// <summary>
-        /// Call it after set the row relation.
+        /// Refresh the view.
         /// </summary>
         public void Refresh()
         {
-            InitCell();
+            //InitCell();
             RaisePropertyChanged("Cell");
-        }
-
-
-        /// <summary>
-        /// Init the cell value.
-        /// </summary>
-        private void InitCell()
-        {
-            //_cell = _gridCell.Cell;
-
-
-            // save the value
-            //_value = _dataGridCell.DataCell.Value.ToString();
-            ////_dispDataCell.SetValue(val);
-
-            RaisePropertyChanged("Cell");
-
         }
 
         /// <summary>
@@ -93,7 +68,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <param name="value"></param>
         private void SetCell(object value)
         {
-            if (_gridCell.Cell == value)
+            if (_gridCell.Content == value)
                 // the new value is the same than the old one
                 return;
 
@@ -101,10 +76,10 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                 return;
 
             // set the new value to the cell
-            _gridCell.Cell= value;
+            _gridCell.Content= value;
 
-            // raise action: value modified in the UI
-            _gridCell.RaiseValueModifiedInUI();
+            // raise action: cell content has changed
+            _gridCell.RaiseGridCellChanged();
 
             RaisePropertyChanged("Cell");
         }

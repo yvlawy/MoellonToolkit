@@ -153,7 +153,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             foreach (IGridColumn col in _dynDataGrid.ListColumn)
             {
                 // create the cell, matching the type defined in the column
-                IGridCell cell = _gridFactory.CreateCell(_dynDataGrid, col);
+                IGridCell cell = _gridFactory.CreateCell(_dynDataGrid, col, row);
                 row.AddCell(cell);
             }
 
@@ -257,7 +257,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 // depending on the type of the new column
-                IGridCell cell = _gridFactory.CreateCell(_dynDataGrid, column);
+                IGridCell cell = _gridFactory.CreateCell(_dynDataGrid, column, gridRow);
 
                 gridRow.AddCell(cell);
             }

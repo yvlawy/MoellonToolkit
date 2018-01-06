@@ -54,7 +54,7 @@
     </Compile>
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabControl.cs" />
     <Compile Include="_src\Components\CloseableTabControl\CloseableTabItem.cs" />
-    <Compile Include="_src\Components\DynDataGrid\ActionGridCellValueModifiedProvider.cs" />
+    <Compile Include="_src\Components\DynDataGrid\GridCellChangedProvider.cs" />
     <Compile Include="_src\Components\DynDataGrid\DynDataGridErrCode.cs" />
     <Compile Include="_src\Components\DynDataGrid\Factories\DynDataGridFactory.cs" />
     <Compile Include="_src\Components\DynDataGrid\Factories\DynDataGridFactoryBase.cs" />

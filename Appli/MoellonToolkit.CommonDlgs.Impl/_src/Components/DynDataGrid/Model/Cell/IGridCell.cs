@@ -14,11 +14,19 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     {
         IGridColumn Column { get; }
 
+        IGridRow Row { get; }
+        
         bool IsReadOnly { get; }
 
         /// <summary>
         /// The cell content: a value (string, int,...) or a component: combobox, button,...
         /// </summary>
-        object Cell { get; set; }
+        object Content { get; set; }
+
+        /// <summary>
+        /// Raise that the cell content has changed.
+        /// </summary>
+        void RaiseGridCellChanged();
+
     }
 }

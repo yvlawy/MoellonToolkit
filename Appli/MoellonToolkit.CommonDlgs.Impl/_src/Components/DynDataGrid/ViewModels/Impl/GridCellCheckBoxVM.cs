@@ -18,11 +18,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         private IGridCellCheckBox _gridCell;
 
         /// <summary>
-        /// The cell content.
-        /// </summary>
-        private object _isChecked;
-
-        /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="gridCell"></param>
@@ -30,7 +25,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         {
             _gridCell = gridCell;
             IsReadOnly = _gridCell.IsReadOnly;
-            InitCell();
+            //InitCell();
         }
 
 
@@ -44,7 +39,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         {
             get
             {
-                return _isChecked;
+                return _gridCell.Content;
             }
             // update the cell value, from the UI
             set
@@ -61,18 +56,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         public void Refresh()
         {
-            InitCell();
             RaisePropertyChanged("IsChecked");
-        }
-        /// <summary>
-        /// Init the cell value.
-        /// </summary>
-        private void InitCell()
-        {
-            _isChecked = _gridCell.Cell;
-
-            RaisePropertyChanged("IsChecked");
-
         }
 
         /// <summary>
@@ -81,15 +65,18 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// <param name="value"></param>
         private void SetCell(object value)
         {
-            if (_isChecked == value)
+            if (_gridCell.Content == value)
                 // the new value is the same than the old one
                 return;
 
             if (_gridCell.Column.IsEditionReadOnly)
                 return;
 
-            // check the type
-            _isChecked = value;
+            // set the new value to the cell
+            _gridCell.Content = value;
+
+            // raise action: cell content has changed
+            _gridCell.RaiseGridCellChanged();
 
             RaisePropertyChanged("IsChecked");
         }

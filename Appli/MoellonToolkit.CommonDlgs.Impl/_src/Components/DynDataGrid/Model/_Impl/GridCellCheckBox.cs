@@ -13,10 +13,16 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         /// </summary>
         /// <param name="column"></param>
         /// <param name="value"></param>
-        public GridCellCheckBox(IGridColumnCheckBox  column, bool value, ActionGridCellValueModifiedProvider actionProvider) :base(column, actionProvider)
+        public GridCellCheckBox(IGridColumnCheckBox  column, IGridRow row, bool value, GridCellChangedProvider actionProvider) :base(column, row, actionProvider)
         {
-            // TODO: c'est ca? 
-            Cell = value;
+            Content = value;
+        }
+
+        public override string ToString()
+        {
+            string s = ((bool)Content).ToString();
+            if (s == null) s = "(null)";
+            return "chkbox: " + s;
         }
 
     }
