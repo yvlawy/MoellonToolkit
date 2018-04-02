@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appli", "Appli", "{3BAB132E-3BC7-47B4-A07F-8EA688915BE2}"
 EndProject
@@ -42,6 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialogs", "Dialogs", "{9DB8
 		Docs\Dialogs\dlgInformation.jpg = Docs\Dialogs\dlgInformation.jpg
 		Docs\Dialogs\dlgInformationWidthXL.jpg = Docs\Dialogs\dlgInformationWidthXL.jpg
 		Docs\Dialogs\dlgInputText.jpg = Docs\Dialogs\dlgInputText.jpg
+		Docs\Dialogs\dlgInputTextMulti.jpg = Docs\Dialogs\dlgInputTextMulti.jpg
 		Docs\Dialogs\dlgInputTextWidthLarge.jpg = Docs\Dialogs\dlgInputTextWidthLarge.jpg
 		Docs\Dialogs\dlgListChoice.jpg = Docs\Dialogs\dlgListChoice.jpg
 		Docs\Dialogs\dlgQuestion.jpg = Docs\Dialogs\dlgQuestion.jpg

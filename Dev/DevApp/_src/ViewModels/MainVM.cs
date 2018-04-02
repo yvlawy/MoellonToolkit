@@ -815,13 +815,13 @@ namespace DevApp.ViewModels
         private void DoShowDlgInputTextMulti()
         {
             string text;
-            CommonDlgResult res = AppCtrlProvider.AppCtrl.CommonDlg.ShowDlgInputTextMulti("Input", "Give a name:", "name", out text);
+            CommonDlgResult res = AppCtrlProvider.AppCtrl.CommonDlg.ShowDlgInputTextMulti("Input", "Give a description:", "", out text);
             if (res != CommonDlgResult.Ok)
             {
                 AppCtrlProvider.AppCtrl.CommonDlg.ShowWarning(WHSize.WL, "The user cancelled the operation!");
                 return;
             }
-            AppCtrlProvider.AppCtrl.CommonDlg.ShowInformation("text is: " + text);
+            AppCtrlProvider.AppCtrl.CommonDlg.ShowInformation("description is: " + text);
         }
         
         //-------------------------------------------------------------------
