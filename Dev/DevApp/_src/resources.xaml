@@ -10,6 +10,11 @@
         <v:EditDynDataGridView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:MultiComponentsVM}">
+        <v:MultiComponents />
+    </DataTemplate>
+
+
     <!-- declare this for the dynamic dataGrid component 
          here or in the component View using the component -->
     <!--<DataTemplate DataType="{x:Type tc:DynDataGridVM}">

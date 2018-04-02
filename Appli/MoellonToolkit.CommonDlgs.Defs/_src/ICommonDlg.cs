@@ -119,6 +119,16 @@ namespace MoellonToolkit.CommonDlgs.Defs
         CommonDlgResult ShowDlgInputText(WHSize whSize, string dlgTitle, string message, string initialtext, out string text);
         CommonDlgResult ShowDlgInputText(string dlgTitle, string message, string initialtext, out string text);
 
+        /// <summary>
+        /// Show a dialogbox to input a multi-lines text, with Ok/cancel buttons.
+        /// </summary>
+        /// <param name="dlgTitle"></param>
+        /// <param name="message"></param>
+        /// <param name="initialtext"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        CommonDlgResult ShowDlgInputTextMulti(string dlgTitle, string message, string initialtext, out string text);
+        
 
         CommonDlgResult ShowDlgSelectFile(string defaultPath, string defaultExt, string filter, out string pathName, out string fileName);
         CommonDlgResult ShowDlgSelectFolder(string defaultPath, out string pathName, out string fileName);

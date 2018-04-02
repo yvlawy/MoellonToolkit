@@ -70,9 +70,13 @@
     <Compile Include="_src\ViewModels\CultureCodeVM.cs" />
     <Compile Include="_src\ViewModels\EditDynDataGridVM.cs" />
     <Compile Include="_src\ViewModels\MainVM.cs" />
+    <Compile Include="_src\ViewModels\MultiComponentsVM.cs" />
     <Compile Include="_src\ViewModels\SplashScreenVM.cs" />
     <Compile Include="_src\ViewModels\StringCodeVM.cs" />
     <Compile Include="_src\ViewModels\TextTranslationVM.cs" />
+    <Compile Include="_src\Views\MultiComponents.xaml.cs">
+      <DependentUpon>MultiComponents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_src\Views\EditDynDataGridView.xaml.cs">
       <DependentUpon>EditDynDataGridView.xaml</DependentUpon>
     </Compile>
@@ -82,6 +86,10 @@
     <Page Include="_src\resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_src\Views\MultiComponents.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="_src\Views\EditDynDataGridView.xaml">
       <SubType>Designer</SubType>

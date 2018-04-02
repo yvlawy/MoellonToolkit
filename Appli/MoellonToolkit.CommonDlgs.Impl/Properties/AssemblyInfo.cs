@@ -8,9 +8,9 @@ using System.Windows;
 [assembly: AssemblyTitle("MoellonToolkit.CommonDlgs.Impl")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("yvlawy")]
+[assembly: AssemblyCompany("lawy")]
 [assembly: AssemblyProduct("MoellonToolkit.CommonDlgs.Impl")]
-[assembly: AssemblyCopyright("Copyright © yvlawy 2018")]
+[assembly: AssemblyCopyright("Copyright © lawy 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -42,5 +42,5 @@ using System.Windows;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.0.4")]
-[assembly: AssemblyFileVersion("0.4.0.4")]
+[assembly: AssemblyVersion("0.5.0.0")]
+[assembly: AssemblyFileVersion("0.5.0.0")]

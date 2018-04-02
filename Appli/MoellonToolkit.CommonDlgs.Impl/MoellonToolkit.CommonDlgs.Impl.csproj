@@ -101,15 +101,20 @@
     <Compile Include="_src\Components\DynDataGrid\ViewModels\IGridRowVM.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\GridColMapping\GridMappingCellsBase.cs" />
     <Compile Include="_src\Components\DynDataGrid\ViewModels\Impl\RowGridBaseVM.cs" />
+    <Compile Include="_src\Components\ObservableCollectionExt\ObservableCollectionExt.cs" />
     <Compile Include="_src\Managers\CommonDlg.cs" />
     <Compile Include="_src\Managers\CoreSystem.cs" />
     <Compile Include="_src\Managers\ImageProvider.cs" />
     <Compile Include="_src\ViewModels\DlgComboChoiceVM.cs" />
+    <Compile Include="_src\ViewModels\DlgInputTextMultiVM.cs" />
     <Compile Include="_src\ViewModels\DlgInputTextVM.cs" />
     <Compile Include="_src\ViewModels\DlgListChoiceVM.cs" />
     <Compile Include="_src\ViewModels\DlgMsgVM.cs" />
     <Compile Include="_src\Views\DlgComboChoice.xaml.cs">
       <DependentUpon>DlgComboChoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_src\Views\DlgInputTextMulti.xaml.cs">
+      <DependentUpon>DlgInputTextMulti.xaml</DependentUpon>
     </Compile>
     <Compile Include="_src\Views\DlgInputText.xaml.cs">
       <DependentUpon>DlgInputText.xaml</DependentUpon>
@@ -131,6 +136,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="_src\Views\DlgComboChoice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="_src\Views\DlgInputTextMulti.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

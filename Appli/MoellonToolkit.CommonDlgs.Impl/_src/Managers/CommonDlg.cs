@@ -40,6 +40,8 @@ namespace MoellonToolkit.CommonDlgs.Impl
 
         private DlgInputText _dlgInputText;
 
+        private DlgInputTextMulti _dlgInputTextMulti;
+
         private DlgComboChoice _dlgComboChoice;
 
         private DlgListChoice _dlgListChoice;
@@ -495,12 +497,79 @@ namespace MoellonToolkit.CommonDlgs.Impl
             return dlgVM.DlgResult;
         }
 
+        /// <summary>
+        /// Show a dialog box to input a multi-lines text, with ok/cancel buttons.
+        /// 
+        /// The WHsize is not used!
+        /// </summary>
+        /// <param name="whSize"></param>
+        /// <param name="dlgTitle"></param>
+        /// <param name="textTitle"></param>
+        /// <param name="initialtext"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public CommonDlgResult ShowDlgInputTextMulti(WHSize whSize, string dlgTitle, string textTitle, string initialtext, out string text)
+        {
+            if (dlgTitle == null)
+                dlgTitle = "";
+            if (string.IsNullOrWhiteSpace(textTitle))
+                textTitle = "";
+
+            // create and define the dlgBox
+            DlgInputTextMultiVM dlgVM = new DlgInputTextMultiVM(_coreSystem);
+            dlgVM.Title = dlgTitle;
+            dlgVM.TextTitle = textTitle;
+            dlgVM.TextInput = initialtext;
+
+
+            // to close the dlgBox, like this, because its a WPF/MVVM implementation
+            dlgVM.DoCloseView = () => DoCloseDlgInputTextMulti();
+
+            _dlgInputTextMulti = new DlgInputTextMulti();
+            _dlgInputTextMulti.Owner = _parent;
+            _dlgInputTextMulti.DataContext = dlgVM;
+
+            // TODO: need to use special size for this dialogbox type!
+            //SetWindowWHSize(_dlgInputTextMulti, whSize);
+
+            // open the dlgBox, is modal/synchronized, wait the close of the dlg
+            _dlgInputTextMulti.ShowDialog();
+            _dlgInputTextMulti = null;
+
+            // get the text
+            text = dlgVM.TextInput;
+
+            // get the result
+            return dlgVM.DlgResult;
+        }
+
+        /// <summary>
+        /// Show a dlg box to get a text with buttons: Ok/Cancel.
+        /// </summary>
+        /// <param name="dlgTitle"></param>
+        /// <param name="textTitle"></param>
+        /// <param name="initialtext"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public CommonDlgResult ShowDlgInputText(string dlgTitle, string textTitle, string initialtext, out string text)
         {
             return ShowDlgInputText(WHSize.Default, dlgTitle, textTitle, initialtext, out text);
         }
 
-    #endregion
+        /// <summary>
+        /// Show a dlg box to get a text multi-lines with buttons: Ok/Cancel.
+        /// </summary>
+        /// <param name="dlgTitle"></param>
+        /// <param name="textTitle"></param>
+        /// <param name="initialtext"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public CommonDlgResult ShowDlgInputTextMulti(string dlgTitle, string textTitle, string initialtext, out string text)
+        {
+            return ShowDlgInputTextMulti(WHSize.Default, dlgTitle, textTitle, initialtext, out text);
+        }
+
+        #endregion
 
         //=====================================================================
         #region Public Show dlg Select Folder/file, save file.
@@ -810,6 +879,15 @@ namespace MoellonToolkit.CommonDlgs.Impl
 
             _dlgInputText.Close();
         }
+
+        private void DoCloseDlgInputTextMulti()
+        {
+            if (_dlgInputTextMulti == null)
+                return;
+
+            _dlgInputTextMulti.Close();
+        }
+
 
         private void DoCloseDlgComboChoice()
         {

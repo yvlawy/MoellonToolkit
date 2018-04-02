@@ -38,6 +38,8 @@ namespace DevApp.ViewModels
         ICommand _showDlgInputTextCmd;
         ICommand _showDlg_WL_InputTextCmd;
 
+        ICommand _showDlgInputTextMultiCmd;
+
         ICommand _showDlgSelectFileCmd;
 
         /// <summary>
@@ -309,6 +311,19 @@ namespace DevApp.ViewModels
                                                param => CanDoShowDlg_WL_InputText());
                 }
                 return _showDlg_WL_InputTextCmd;
+            }
+        }
+
+        public ICommand ShowDlgInputTextMultiCmd
+        {
+            get
+            {
+                if (_showDlgInputTextMultiCmd == null)
+                {
+                    _showDlgInputTextMultiCmd = new RelayCommand(param => DoShowDlgInputTextMulti(),
+                                               param => CanDoShowDlgInputTextMulti());
+                }
+                return _showDlgInputTextMultiCmd;
             }
         }
 
@@ -786,7 +801,27 @@ namespace DevApp.ViewModels
                 return;
             }
             AppCtrlProvider.AppCtrl.CommonDlg.ShowInformation("Name is: " + text);
+        }
 
+        //-------------------------------------------------------------------
+        private bool CanDoShowDlgInputTextMulti()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void DoShowDlgInputTextMulti()
+        {
+            string text;
+            CommonDlgResult res = AppCtrlProvider.AppCtrl.CommonDlg.ShowDlgInputTextMulti("Input", "Give a name:", "name", out text);
+            if (res != CommonDlgResult.Ok)
+            {
+                AppCtrlProvider.AppCtrl.CommonDlg.ShowWarning(WHSize.WL, "The user cancelled the operation!");
+                return;
+            }
+            AppCtrlProvider.AppCtrl.CommonDlg.ShowInformation("text is: " + text);
         }
         
         //-------------------------------------------------------------------

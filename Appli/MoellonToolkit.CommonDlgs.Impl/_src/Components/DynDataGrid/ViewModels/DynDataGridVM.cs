@@ -184,7 +184,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             if (gridRow.ListCell.Count() != _collColumnGrid.Count)
                 return null;
 
-            // the row should be present inthe dataGrid model
+            // the row should be present in the dataGrid model
             if (!_dynDataGrid.ListRow.Contains(gridRow))
                 return null;
 
@@ -264,6 +264,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
             // update the UI, add the colVM
             gridColumnVM= AddColumnVM(column);
+            RaisePropertyChanged("CollColumnGrid");
             return DynDataGridErrCode.Ok;
         }
 
@@ -378,10 +379,10 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             {
                 AddColumnVM(column);
             }
-            //RaisePropertyChanged("CollColumnGrid");
+            RaisePropertyChanged("CollColumnGrid");
 
             //----build the rows of the dataGrid
-            // TODO: mettre dans une méthode
+            _collDataRow.Clear();
             foreach (IGridRow gridRow in _dynDataGrid.ListRow)
             {
                 IGridRowVM rowVM = new GridRowVM(gridRow);
@@ -424,6 +425,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             {
                 columnVM = new GridColumnStringVM(columnString);
                 _collColumnGrid.Add(columnVM);
+                RaisePropertyChanged("CollColumnGrid");
                 return columnVM;
             }
 
@@ -433,6 +435,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             {
                 columnVM = new GridColumnCheckBoxVM(columnCheckBox);
                 _collColumnGrid.Add(columnVM);
+                RaisePropertyChanged("CollColumnGrid");
                 return columnVM;
             }
 

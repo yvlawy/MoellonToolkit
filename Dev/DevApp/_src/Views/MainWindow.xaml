@@ -54,8 +54,11 @@
                     <Button Grid.Row="1" Grid.Column="0" Width="180" Height="25" Content="Dlg W-XL Information" Command="{Binding ShowDlg_WXL_InformationCmd}" />
                     <Button Grid.Row="1" Grid.Column="1" Width="180" Height="25" Content="Dlg W-XL, H-XL Question" Command="{Binding ShowDlg_WXL_HXL_QuestionCmd}" />
                     <Button Grid.Row="1" Grid.Column="2" Width="180" Height="25" Content="Dlg W-L, H-XXL Error" Command="{Binding ShowDlg_WL_HXXL_ErrorCmd}" />
+
                     <Button Grid.Row="3" Grid.Column="0" Width="180" Height="25" Content="Dlg InputText" Command="{Binding ShowDlgInputTextCmd}" />
                     <Button Grid.Row="3" Grid.Column="1" Width="180" Height="25" Content="Dlg W-L InputText" Command="{Binding ShowDlg_WL_InputTextCmd}" />
+                    
+                    <Button Grid.Row="4" Grid.Column="0" Width="180" Height="25" Content="Dlg InputText Multi" Command="{Binding ShowDlgInputTextMultiCmd}" />
 
                     <Button Grid.Row="5" Grid.Column="0" Width="180" Height="25" Content="Dlg ComboChoice" Command="{Binding ShowDlgComboChoiceCmd}" />
                     <Button Grid.Row="5" Grid.Column="1" Width="180" Height="25" Content="Dlg ListChoice" Command="{Binding ShowDlgListChoiceCmd}" />
@@ -104,6 +107,10 @@
                 <ContentPresenter Content="{Binding EditDynDataGridVM}"></ContentPresenter>
             </TabItem>
             
+            <TabItem Header="MultiComponents">
+                <ContentPresenter Content="{Binding MultiComponentsVM}"></ContentPresenter>
+            </TabItem>
+
             <tc:CloseableTabItem Header="TabItem 3" />
             <tc:CloseableTabItem Header="TabItem 4" HorizontalAlignment="Left" Name="tabItem1" VerticalAlignment="Top">
                 <Grid></Grid>
