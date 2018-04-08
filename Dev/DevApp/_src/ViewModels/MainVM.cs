@@ -141,13 +141,17 @@ namespace DevApp.ViewModels
         /// <summary>
         /// The dynamic dataGrid: its the base component: only a grid without any button.
         /// </summary>
-        public DynDataGridVM DynDataGridVM
-        { get; set; }
+        //public DynDataGridVM DynDataGridVM
+        //{ get; set; }
 
         /// <summary>
         /// The Edit dynamic dataGrid (having Add/Del row and col).
         /// </summary>
         public EditDynDataGridVM EditDynDataGridVM
+        { get; set; }
+
+
+        public MultiComponentsVM MultiComponentsVM
         { get; set; }
 
         #endregion
@@ -1056,7 +1060,9 @@ namespace DevApp.ViewModels
             // create the view: dynamic dataGrid wihth butons Add/Del cols and rows
             EditDynDataGridVM = new EditDynDataGridVM(AppCtrlProvider.AppCtrl.CommonDlg, AppCtrlProvider.AppCtrl.DynDataGridFactory, AppCtrlProvider.AppCtrl.DataGrid);
 
-            DynDataGridVM= new DynDataGridVM(AppCtrlProvider.AppCtrl.DynDataGridFactory, AppCtrlProvider.AppCtrl.DataGrid);
+            //DynDataGridVM= new DynDataGridVM(AppCtrlProvider.AppCtrl.DynDataGridFactory, AppCtrlProvider.AppCtrl.DataGrid);
+
+            MultiComponentsVM = new MultiComponentsVM();
         }
 
         /// <summary>

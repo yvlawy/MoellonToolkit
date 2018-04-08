@@ -14,6 +14,13 @@
         <v:MultiComponents />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:EditComponentStringVM}">
+        <v:EditComponentString />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:EditComponentDynDataGridVM}">
+        <v:EditComponentDynDataGrid />
+    </DataTemplate>
 
     <!-- declare this for the dynamic dataGrid component 
          here or in the component View using the component -->

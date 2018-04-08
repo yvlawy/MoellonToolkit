@@ -78,6 +78,11 @@ namespace DevApp.Ctrl
         /// </summary>
         public IDynDataGrid DataGrid { get; private set; }
 
+        /// <summary>
+        /// A datagrid to test the dynamic data grid UI.
+        /// </summary>
+        public IDynDataGrid DataGrid2 { get; private set; }
+
         #endregion
 
         //=====================================================================
@@ -291,21 +296,28 @@ namespace DevApp.Ctrl
 
         private void InitData()
         {
-            DynDataGridFactory= new DynDataGridFactory();
+            DynDataGridFactory = new DynDataGridFactory();
+
+            CreateDataGrid(DynDataGridFactory);
+            CreateDataGrid2(DynDataGridFactory);
+        }
+
+        private void CreateDataGrid(IDynDataGridFactory dynDataGridFactory)
+        {
             DataGrid = new DynDataGrid();
 
             //----create columns
             IGridColumn columnKey;
-            DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Key", out columnKey);
+            dynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Key", out columnKey);
             // this column cells are read-only
             columnKey.IsEditionReadOnly = true;
 
             IGridColumn columnValue;
-            DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Value", out columnValue);
+            dynDataGridFactory.CreateColumn(DataGrid, GridColumnType.String, "Value", out columnValue);
 
             // col checkbox
             IGridColumn columnCheck;
-            DynDataGridFactory.CreateColumn(DataGrid, GridColumnType.CheckBox, "Checked", out columnCheck);
+            dynDataGridFactory.CreateColumn(DataGrid, GridColumnType.CheckBox, "Checked", out columnCheck);
 
             //----create a data row, with empty cells
             IGridRow row = DynDataGridFactory.CreateRowWithCells(DataGrid);
@@ -318,6 +330,23 @@ namespace DevApp.Ctrl
 
             // test: search a column by the name
             //IGridColumn colFound = DataGrid.FindColumnByName("Key");
+        }
+
+        private void CreateDataGrid2(IDynDataGridFactory dynDataGridFactory)
+        {
+            DataGrid2 = new DynDataGrid();
+
+            //----create columns
+            IGridColumn columnId;
+            dynDataGridFactory.CreateColumn(DataGrid2, GridColumnType.String, "Id", out columnId);
+            // this column cells are read-only
+            columnId.IsEditionReadOnly = true;
+
+            //----create a data row, with empty cells
+            //IGridRow row = dynDataGridFactory.CreateRowWithCells(DataGrid2);
+
+            //----create data cells
+            //DataGrid2.SetCellValue(row, columnId, "Id");
         }
 
         #endregion

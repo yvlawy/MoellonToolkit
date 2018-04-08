@@ -30,5 +30,11 @@ namespace DevApp.Ctrl
         /// A datagrid to test the dynamic data grid UI.
         /// </summary>
         IDynDataGrid DataGrid { get;  }
+
+        /// <summary>
+        /// Another one datagrid to test , used in MultiComponents view.
+        /// </summary>
+        IDynDataGrid DataGrid2 { get; }
+
     }
 }

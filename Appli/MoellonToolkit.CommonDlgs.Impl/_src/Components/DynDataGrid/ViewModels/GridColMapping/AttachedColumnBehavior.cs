@@ -18,6 +18,12 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
     /// </summary>
     public class AttachedColumnBehavior
     {
+        public static readonly DependencyProperty HeaderTemplateProperty =
+                DependencyProperty.RegisterAttached("HeaderTemplate",
+                typeof(DataTemplate),
+                typeof(AttachedColumnBehavior),
+                new UIPropertyMetadata(null, OnHeaderTemplatePropertyChanged));
+
         public static readonly DependencyProperty AttachedColumnsProperty =
                 DependencyProperty.RegisterAttached("AttachedColumns",
                 typeof(IEnumerable),
@@ -30,11 +36,6 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                 typeof(AttachedColumnBehavior),
                 new UIPropertyMetadata(null, OnMappedCellsPropertyChanged));
 
-        public static readonly DependencyProperty HeaderTemplateProperty =
-                DependencyProperty.RegisterAttached("HeaderTemplate",
-                typeof(DataTemplate),
-                typeof(AttachedColumnBehavior),
-                new UIPropertyMetadata(null, OnHeaderTemplatePropertyChanged));
 
         public static readonly DependencyProperty AttachedCellTemplateProperty =
                 DependencyProperty.RegisterAttached("AttachedCellTemplate",
@@ -54,21 +55,24 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
             if (dataGrid == null) 
                 return;
 
+            // load/refresh
+            dataGrid.Loaded += (sender, args) => RefreshColumns(dataGrid, GetAttachedColumns(dataGrid));
+
             var columns = e.NewValue as INotifyCollectionChanged;
             if (columns == null)
                 return;
-            
+
+            dataGrid.DataContextChanged += DataGrid_DataContextChanged;
+
             columns.CollectionChanged += (sender, args) =>
             {
                 if (args.Action == NotifyCollectionChangedAction.Remove)
                     RemoveColumns(dataGrid, args.OldItems);
                 else if (args.Action == NotifyCollectionChangedAction.Add)
-                    // adding a new col
+                    // adding a new col to existing ones
                     AddColumns(dataGrid, args.NewItems);
             };
 
-            // load/refresh
-            dataGrid.Loaded += (sender, args) => RefreshColumns(dataGrid, GetAttachedColumns(dataGrid));
             var items = dataGrid.ItemsSource as INotifyCollectionChanged;
             if (items != null)
                 items.CollectionChanged += (sender, args) =>
@@ -76,8 +80,28 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
                     if (args.Action == NotifyCollectionChangedAction.Remove)
                         RemoveMappingByRow(dataGrid, args.NewItems);
                 };
-            
+
         }
+
+        /// <summary>
+        /// The content of the dataGrid has changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void DataGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var dataGrid = sender as DataGrid;
+
+            // get the new value
+            var dynDataGridVM = e.NewValue as DynDataGridVM;
+
+            // get the new list of columns, from he ViewModel
+            var columns = dynDataGridVM.CollColumnGrid; 
+
+            // to refresh the UI header
+            RefreshColumns(dataGrid, columns);
+        }
+
         /// <summary>
         /// Refresh all columns of the dataGird.
         /// </summary>
@@ -93,7 +117,7 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
 
         /// <summary>
         /// Add all columns to the dataGird.
-        /// (first time)
+        /// First time or refresh.
         /// </summary>
         /// <param name="dataGrid"></param>
         /// <param name="columns"></param>
@@ -174,7 +198,11 @@ namespace MoellonToolkit.CommonDlgs.Impl.Components
         }
         #endregion
 
-
+        /// <summary>
+        /// Get the existing columns of the datagrid.
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <returns></returns>
         public static IEnumerable GetAttachedColumns(DependencyObject dataGrid)
         {
             return (IEnumerable)dataGrid.GetValue(AttachedColumnsProperty);

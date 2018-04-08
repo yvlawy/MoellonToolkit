@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MoellonToolkit.MVVMBase;
 
-namespace DevApp.ViewModels
+namespace DevApp.DataModel
 {
-
-    public class MultiComponentsVM : ViewModelBase
+    public class DataTable : DataBase
     {
     }
 }

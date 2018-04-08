@@ -46,11 +46,11 @@
     </UserControl.Resources>
 
     <!-- the dynamic DataGrid -->
-    <DataGrid ItemsSource="{Binding CollDataRow}" x:Name="myGrid" 
+    <DataGrid ItemsSource="{Binding CollDataRow, UpdateSourceTrigger=PropertyChanged}" x:Name="myGrid" 
                     local:AttachedColumnBehavior.HeaderTemplate="{StaticResource headerTemplate}"
                     local:AttachedColumnBehavior.AttachedCellTemplate="{StaticResource cellTemplate}"
-                    local:AttachedColumnBehavior.AttachedColumns="{Binding CollColumnGrid}"
                     local:AttachedColumnBehavior.AttachedCellEditingTemplate="{StaticResource cellEditingTemplate}"
+                    local:AttachedColumnBehavior.AttachedColumns="{Binding CollColumnGrid}"
                     local:AttachedColumnBehavior.MappedCells="{Binding CollCell}" 
                     AutoGenerateColumns="False"
                     SelectedItem="{Binding SelectedRow}" 
