@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MoellonToolkit</id>
-    <version>0.5.0-rc</version>
+    <version>0.5.0</version>
     <title>MoellonToolkit</title>
     <authors>lawy</authors>
     <owners>lawy</owners>
