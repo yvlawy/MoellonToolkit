@@ -19,8 +19,9 @@ https://www.nuget.org/packages?q=moellon
 The last release:
 https://www.nuget.org/packages/MoellonToolkit
 
-# New! v0.5.0-beta
+# v0.5.0 last stable version
 Adding the ObservableCollectionExt component and the dialogbox InputText Multilines (a textArea).
+Now the version is stable and ready to use.
 
 # More explanations on the blog
 http://yvlawy.blogspot.fr/
